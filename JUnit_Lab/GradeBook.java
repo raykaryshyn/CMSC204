@@ -17,7 +17,7 @@ public class GradeBook
     * Gets the amount of scores.
     * @return the amount of scores
     */
-   public int getScoreSize()
+   public int getScoresSize()
    {
       return scoresSize;
    }
@@ -66,6 +66,7 @@ public class GradeBook
       else
       {
          double smallest = scores[0];
+
          for (int i = 1; i < scoresSize; i++)
          {
             if (scores[i] < smallest)
@@ -73,6 +74,7 @@ public class GradeBook
                smallest = scores[i];
             }
          }
+         
          return smallest;
       }         
    }
@@ -95,6 +97,7 @@ public class GradeBook
    public String toString()
    {
       String output = "";
+
       for (int i = 0; i < scoresSize; i++)
       {
          output += scores[i];
@@ -103,6 +106,7 @@ public class GradeBook
             output += ", ";
          }
       }
+
       return output;
    }
 }
