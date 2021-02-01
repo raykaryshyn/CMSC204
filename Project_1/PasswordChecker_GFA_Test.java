@@ -34,13 +34,13 @@ public class PasswordChecker_GFA_Test {
 	@Test
 	public void testGetInvalidPasword()
 	{
-		/* PasswordCheckerUtility.getInvalidPasswords(passwords); */		
+		PasswordCheckerUtility.getInvalidPasswords(passwords);
 	}
 	
 	@Test
 	public void testIsValidPasswordTooShort()
 	{
-		/* try{
+		try{
 			assertTrue(PasswordCheckerUtility.isValidPassword("abc12"));
 		}
 		catch(LengthException e)
@@ -51,20 +51,20 @@ public class PasswordChecker_GFA_Test {
 		{
 			assertTrue("Threw some other exception besides lengthException",false);
 			System.out.println("line 49");
-		} */
+		}
 	}
 	
 	
 	@Test
 	public void testIsValidPasswordSuccess()
 	{
-		/* try{
+		try{
 			assertEquals(true,PasswordCheckerUtility.isValidPassword("strongPWD1"));
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.getMessage());
-		}  */
+		} 
 	}
 	
 	
@@ -80,7 +80,7 @@ public class PasswordChecker_GFA_Test {
 	@Test
 	public void testIsValidPasswordTooShortThrowsSomeOtherExcep()
 	{
-		/* try{
+		try{
 			assertTrue(PasswordCheckerUtility.isValidPassword("abcABs"));
 		}
 		catch(LengthException e)
@@ -92,7 +92,7 @@ public class PasswordChecker_GFA_Test {
 		{
 			System.out.println(e.getMessage());
 			assertTrue("Threw some other exception besides lengthException", true);
-		} */
+		}
 	}
 	
 	
