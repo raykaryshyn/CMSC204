@@ -24,9 +24,6 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-/* import Assignments.Fall2020.Assignment1.MySolution.PasswordCheckerUtility;
-import Assignments.Fall2020.Assignment1.MySolution.Exceptions.UnmatchedException; */
-
 
 public class PasswordMain extends BorderPane
 {
@@ -36,7 +33,7 @@ public class PasswordMain extends BorderPane
 	private Button checkPwdButton, exitButton, checkPwdsInFileButton;
 	DecimalFormat format = new DecimalFormat("#0.000");
 	private Alert alert = new Alert(AlertType.INFORMATION);
-	/* PasswordCheckerUtility pwdChecker; */
+	PasswordCheckerUtility pwdChecker;
 	
 	public PasswordMain()
 	{
@@ -129,7 +126,7 @@ public class PasswordMain extends BorderPane
 	}
 
 	public void checkPassword() {
-		/* //Get information
+		//Get information
 		String passwordString = passwordText.getText();
 		String passwordAString = passwordAText.getText();
 		try
@@ -160,7 +157,7 @@ public class PasswordMain extends BorderPane
 		catch (Exception ex)		{
 			alert.setContentText(ex.getMessage());
 			alert.showAndWait();
-		} */			
+		}			
 	}
 
 	public void readFile() {
@@ -175,17 +172,17 @@ public class PasswordMain extends BorderPane
 				while (input.hasNext()) {
 					passwords.add(input.next());
 				}
-				/* ArrayList<String> invalidPassword = PasswordCheckerUtility.getInvalidPasswords(passwords); */
-				/* if (invalidPassword.isEmpty()) {
+				ArrayList<String> invalidPassword = PasswordCheckerUtility.getInvalidPasswords(passwords);
+				if (invalidPassword.isEmpty()) {
 					results = "All Passwords are valid!";
 					title = "Passwords";
 				}
 				else {
 					results = "Invalid Passwords\n";
 					title = "Invalid Passwords";
-				} */
-				/* for (String passwordString : invalidPassword)
-					results += passwordString + "\n"; */
+				}
+				for (String passwordString : invalidPassword)
+					results += passwordString + "\n";
 				JOptionPane.showMessageDialog(null, results, title, JOptionPane.PLAIN_MESSAGE);
 			} // end of try
 			catch (FileNotFoundException ex) {

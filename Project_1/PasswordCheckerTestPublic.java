@@ -1,3 +1,5 @@
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -31,51 +33,51 @@ class PasswordCheckerTestPublic {
 		passwordsArray = null;
 	}
 
-	//@Test
+	@Test
 	void testComparePasswords() {
-		/* Throwable exception = assertThrows(UnmatchedException.class, new Executable() {			
+		Throwable exception = assertThrows(UnmatchedException.class, new Executable() {			
 			@Override
 			public void execute() throws Throwable {
 				PasswordCheckerUtility.comparePasswords(password, passwordConfirm);				
 			}
 		});
 		
-		assertEquals("Passwords do not match", exception.getMessage()); */
+		assertEquals("The passwords do not match", exception.getMessage());
 	}
 	
-	//@Test 
+	@Test 
 	void testComparePasswordsWithReturn() {
-		/* assertFalse(PasswordCheckerUtility.comparePasswordsWithReturn(password, passwordConfirm));
-		assertTrue(PasswordCheckerUtility.comparePasswordsWithReturn(password, password)); */
+		assertFalse(PasswordCheckerUtility.comparePasswordsWithReturn(password, passwordConfirm));
+		assertTrue(PasswordCheckerUtility.comparePasswordsWithReturn(password, password));
 	}	
 	
-	//@Test
+	@Test
 	void testUppereAlpha() {
-		/* try {
+		try {
 			assertTrue(PasswordCheckerUtility.hasUpperAlpha("Beautiful"));
 		} catch (NoUpperAlphaException e) {
 			e.printStackTrace();
-		} */
+		}
 	}
 	
-	//@Test
+	@Test
 	void testInValidLength() {
-		/* Throwable exception = Assertions.assertThrows(LengthException.class, new Executable() {
+		Throwable exception = Assertions.assertThrows(LengthException.class, new Executable() {
 			@Override
 			public void execute() throws Throwable {
 				PasswordCheckerUtility.isValidLength(password);
 			}			
 		});
-		assertEquals("The password must be at least 6 characters long", exception.getMessage()); */
+		assertEquals("The password must be at least 6 characters long", exception.getMessage());
 	}
 	
 	@Test
 	public void testGetInvalidPasswords() {
-		/* ArrayList<String> results;
+		ArrayList<String> results;
 		results = PasswordCheckerUtility.getInvalidPasswords(passwordsArray);
 		assertEquals(results.size(), 2);
-		assertEquals(results.get(0), "334455BB -> The password must contain at least one lower case alphabetic character");
-		assertEquals(results.get(1), "Im2cool4U -> The password must contain at least one special character"); */
+		assertEquals(results.get(0), "334455BB -> The password must contain at least one lowercase alphabetic character");
+		assertEquals(results.get(1), "Im2cool4U -> The password must contain at least one special character");
 	}
 
 }

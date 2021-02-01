@@ -35,6 +35,7 @@ public class PasswordChecker_GFA_Test {
 	public void testGetInvalidPasword()
 	{
 		PasswordCheckerUtility.getInvalidPasswords(passwords);
+		
 	}
 	
 	@Test
