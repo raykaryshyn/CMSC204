@@ -116,6 +116,6 @@ public class PasswordCheckerUtility {
         if (hasBetweenSixAndNineChars(password))
             throw new WeakPasswordException();
 
-        return true;
+        return false;
     }
 }
