@@ -1,3 +1,9 @@
+/**
+ * Testing for the Gradebook class.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 import org.junit.*;
 import static org.junit.Assert.*;
 
