@@ -14,7 +14,7 @@ import org.junit.jupiter.api.function.Executable;
 /**
  * STUDENT tests for the methods of PasswordChecker
  * 
- * @author Raymond Karyshyn *
+ * @author Raymond Karyshyn
  */
 public class PasswordCheckerTest_STUDENT {
 	ArrayList<String> passwordsArray;
@@ -74,7 +74,7 @@ public class PasswordCheckerTest_STUDENT {
 
 		// Test "123ABC^", which should not throw an exception and return "True"
 		try {
-			assertTrue(PasswordCheckerUtility.hasUpperAlpha(passwordsArray.get(4)));
+			assertTrue(PasswordCheckerUtility.hasUpperAlpha(passwordsArray.get(0)));
 		}
 		catch (NoUpperAlphaException e) {
 			fail("This password was supposed to pass upper alpha requirements.");

@@ -1,7 +1,6 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\K-Student\\Documents\\junit-platform-console-standalone-1.7.0-M1.jar",
         "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx.base.jar",
         "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx.controls.jar",
         "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx.fxml.jar",
@@ -9,6 +8,7 @@
         "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx.media.jar",
         "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx.swing.jar",
         "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx.web.jar",
-        "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar"
+        "c:\\Users\\K-Student\\Documents\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar",
+        "c:\\Users\\K-Student\\Documents\\junit-platform-console-standalone-1.7.0-M1.jar"
     ]
 }

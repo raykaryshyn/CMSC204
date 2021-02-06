@@ -1,5 +1,11 @@
+/**
+ * Exception for a pair of passwords that do not match.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class UnmatchedException extends Exception {
-    public UnmatchedException() {
+	public UnmatchedException() {
 		super("The passwords do not match");
 	}
 

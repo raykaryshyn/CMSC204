@@ -1,5 +1,11 @@
+/**
+ * Exception for passwords that are less than 6 characters in length.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class LengthException extends Exception {
-    public LengthException() {
+	public LengthException() {
 		super("The password must be at least 6 characters long");
 	}
 

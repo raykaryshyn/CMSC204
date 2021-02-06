@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+
 /**
  * Test the methods of PasswordChecker
  * @author Professor Kartchner

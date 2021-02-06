@@ -1,5 +1,12 @@
+/**
+ * Exception for passwords that have two or more of the same character in
+ * sequence.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class InvalidSequenceException extends Exception {
-    public InvalidSequenceException() {
+	public InvalidSequenceException() {
 		super("The password cannot contain more than two of the same character in sequence");
 	}
 

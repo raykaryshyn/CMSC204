@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.regex.*;
 
+/**
+ * PasswordCheckerUtility returns validity status of provided passwords.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class PasswordCheckerUtility {
     public static void comparePasswords(String password, String passwordConfirm) throws UnmatchedException {
         if (!comparePasswordsWithReturn(password, passwordConfirm))
