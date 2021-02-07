@@ -1,19 +1,19 @@
 /**
- * ...
+ * A linked list for storing entries in a chain of linked nodes.
  * 
  * @author Raymond Karyshyn
  */
 public final class ArrayBag<T> implements BagInterface<T> {
     private Node<T> firstNode;
-    private int numberOfEntries;
+    private int numEntries;
 
     public ArrayBag() {
         firstNode = null;
-        numberOfEntries = 0;
+        numEntries = 0;
     }
 
     public boolean isEmpty() {
-        return numberOfEntries == 0;
+        return numEntries == 0;
     }
 
     public int getCapacity() {
@@ -21,23 +21,23 @@ public final class ArrayBag<T> implements BagInterface<T> {
     }
 
     public int getCurrentSize() {
-        return numberOfEntries;
+        return numEntries;
     }
 
     public boolean add(T newEntry) {
-        Node<T> newNode = new Node<T>(newEntry);
-        newNode.setNext(firstNode);
+        Node<T> newNode = new Node<T>(newEntry, firstNode);
         firstNode = newNode;
-        numberOfEntries++;
+        numEntries++;
         return true;
     }
 
     public T[] toArray() {
+        // The cast is safe because the new array contains null entries
         @SuppressWarnings("unchecked")
-        T[] result = (T[]) new Object[numberOfEntries];
+        T[] result = (T[]) new Object[numEntries];
         int index = 0;
         Node<T> currentNode = firstNode;
-        while ((index < numberOfEntries) && (currentNode != null)) {
+        while ((index < numEntries) && (currentNode != null)) {
             result[index] = currentNode.getData();
             index++;
             currentNode = currentNode.getNext();
@@ -49,7 +49,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
         int frequency = 0;
         int counter = 0;
         Node<T> currentNode = firstNode;
-        while ((counter < numberOfEntries) && (currentNode != null)) {
+        while ((counter < numEntries) && (currentNode != null)) {
             if (anEntry.equals(currentNode.getData())) {
                 frequency++;
             }
@@ -96,7 +96,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
         if (firstNode != null) {
             result = firstNode.getData();
             firstNode = firstNode.getNext();
-            numberOfEntries--;
+            numEntries--;
         }
         return result;
     }
@@ -107,7 +107,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
         if (NodeN != null) {
             NodeN.setData(firstNode.getData());
             firstNode = firstNode.getNext();
-            numberOfEntries--;
+            numEntries--;
             result = true;
         }
         return result;
