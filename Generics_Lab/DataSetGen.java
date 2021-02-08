@@ -3,15 +3,14 @@ public class DataSetGen<T extends Measurable> {
     private T maximum;
     private int count;
 
-   /**
-      Constructs an empty data set.
-   */
-   public DataSetGen()
-   {
-      sum = 0;
-      count = 0;
-      maximum = null;
-   }
+    /**
+     * Constructs an empty data set.
+     */
+    public DataSetGen() {
+        sum = 0;
+        count = 0;
+        maximum = null;
+    }
 
     /**
      * Adds a data value to the data set.
