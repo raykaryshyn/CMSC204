@@ -77,9 +77,8 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
     /** Removes all entries from this bag. */
     public void clear() {
-        while (!isEmpty()) {
+        while (!isEmpty())
             remove();
-        }
     }
 
     /**
@@ -90,14 +89,14 @@ public final class ArrayBag<T> implements BagInterface<T> {
      */
     public int getFrequencyOf(T anEntry) {
         int frequency = 0;
-        int counter = 0;
+        int index = 0;
         Node<T> currentNode = firstNode;
-        while ((counter < numEntries) && (currentNode != null)) {
-            if (anEntry.equals(currentNode.getData())) {
+        while ((index < numEntries) && (currentNode != null)) {
+            if (anEntry.equals(currentNode.getData()))
                 frequency++;
-            }
-            counter++;
+
             currentNode = currentNode.getNext();
+            index++;
         }
         return frequency;
     }
@@ -121,10 +120,11 @@ public final class ArrayBag<T> implements BagInterface<T> {
     public T[] toArray() {
         // The cast is safe because the new array contains null entries
         @SuppressWarnings("unchecked")
-        T[] result = (T[]) new Object[numEntries];
+        T[] result = (T[])new Object[numEntries];
         int index = 0;
         Node<T> currentNode = firstNode;
-        while ((index < numEntries) && (currentNode != null)) {
+        while ((index < numEntries) && (currentNode != null))
+        {
             result[index] = currentNode.getData();
             currentNode = currentNode.getNext();
             index++;

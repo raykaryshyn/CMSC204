@@ -28,7 +28,98 @@ public class OnlineShopper
       
 		System.out.println("Total cost: " + "\t$" + totalCost / 100 + "." +
                          totalCost % 100);
+
+                         
+      // Custom test for ArrayBag
+      CustomTest();
 	} // end main
+
+   
+   /**
+    * Custom test for ArrayBag
+    *
+    * @author Raymond Karyshyn
+    */
+   private static void CustomTest() {
+      System.out.println("\n\n" +
+         "\\/\\/\\/ - - - Custom Test - - - \\/\\/\\/"
+      );
+      Item apple = new Item("Apple", 2998);
+      Item banana = new Item("Banana", 2998);
+      Item orange = new Item("Orange", 2998);
+      Item pear = new Item("Pear", 2998);
+      Item hat = new Item("hat", 5000);
+      Item[] shoppingList = {
+         apple,
+         apple,
+         banana,
+         orange,
+         orange,
+         orange,
+         orange,
+         pear,
+         pear
+      };
+
+      BagInterface<Item> shoppingCart2 = new ArrayBag<>();
+      int totalCost = 0;
+
+      System.out.println("Adding shopping list items to shopping cart...");
+      for (int i = 0; i < shoppingList.length; i++) {
+         Item nextItem = shoppingList[i];
+         shoppingCart2.add(nextItem);
+         totalCost += nextItem.getPrice();
+      }
+
+      System.out.println(
+         "My shopping cart has " +
+         shoppingCart2.getCurrentSize() +
+         " items and is" +
+         (shoppingCart2.isEmpty() ? "" : " NOT") +
+         " empty."
+      );
+
+      System.out.println("\nHere is what is in my shopping cart:");
+      Object[] shoppingCart2Array = (Object[]) shoppingCart2.toArray();
+      for (int i = 0; i < shoppingCart2Array.length; i++) {
+         System.out.println(shoppingCart2Array[i]);
+      }
+
+      System.out.println("\n" +
+         "As you can see, my shopping cart does" +
+         (shoppingCart2.contains(banana) ? "" : " NOT") +
+         " contain a Banana.\n" +
+
+         "My shopping cart does" +
+         (shoppingCart2.contains(hat) ? "" : " NOT") +
+         " contain a Hat."
+      );
+
+      System.out.println("\n" +
+         "Furthermore, my shopping cart has " +
+         shoppingCart2.getFrequencyOf(apple) + " Apples, " +
+         shoppingCart2.getFrequencyOf(banana) + " Banana, " +
+         shoppingCart2.getFrequencyOf(orange) + " Oranges, and " +
+         shoppingCart2.getFrequencyOf(pear) + " Pears."
+      );
+
+      System.out.println("\nCurrently checking out...");
+      while (!shoppingCart2.isEmpty())
+         shoppingCart2.remove();
+      System.out.println(
+         "My shopping cart has " +
+         shoppingCart2.getCurrentSize() +
+         " items and is indeed" +
+         (shoppingCart2.isEmpty() ? "" : " NOT") +
+         " empty."
+      );
+      System.out.println(
+         "Paying a total of $" + 
+         totalCost / 100 + "." + totalCost % 100 + 
+         " with a debit card."
+      );
+      System.out.println("Success.");
+   } // end CustomTest
 } // end OnlineShopper
 
 /*
