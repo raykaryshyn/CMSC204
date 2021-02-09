@@ -31,7 +31,7 @@ public class OnlineShopper
 
                          
       // Custom test for ArrayBag
-      CustomTest();
+      customTest();
 	} // end main
 
    
@@ -40,7 +40,7 @@ public class OnlineShopper
     *
     * @author Raymond Karyshyn
     */
-   private static void CustomTest() {
+   private static void customTest() {
       System.out.println("\n\n" +
          "\\/\\/\\/ - - - Custom Test - - - \\/\\/\\/"
       );
@@ -119,7 +119,7 @@ public class OnlineShopper
          " with a debit card."
       );
       System.out.println("Success.");
-   } // end CustomTest
+   } // end customTest
 } // end OnlineShopper
 
 /*
