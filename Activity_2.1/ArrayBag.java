@@ -120,11 +120,10 @@ public final class ArrayBag<T> implements BagInterface<T> {
     public T[] toArray() {
         // The cast is safe because the new array contains null entries
         @SuppressWarnings("unchecked")
-        T[] result = (T[])new Object[numEntries];
+        T[] result = (T[]) new Object[numEntries];
         int index = 0;
         Node<T> currentNode = firstNode;
-        while ((index < numEntries) && (currentNode != null))
-        {
+        while ((index < numEntries) && (currentNode != null)) {
             result[index] = currentNode.getData();
             currentNode = currentNode.getNext();
             index++;
@@ -132,6 +131,12 @@ public final class ArrayBag<T> implements BagInterface<T> {
         return result;
     }
 
+    /**
+     * Gets a Node reference to an entry in the linked list of type T.
+     * 
+     * @param anEntry The entry to search for and get reference to.
+     * @return A Node reference that stores the entry.
+     */
     private Node<T> getReferenceTo(T anEntry) {
         Node<T> currentNode = firstNode;
         boolean found = false;

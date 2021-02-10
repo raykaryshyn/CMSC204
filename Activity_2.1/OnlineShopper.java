@@ -80,7 +80,7 @@ public class OnlineShopper
       );
 
       System.out.println("\nHere is what is in my shopping cart:");
-      Object[] shoppingCart2Array = (Object[]) shoppingCart2.toArray();
+      Object[] shoppingCart2Array = shoppingCart2.toArray();
       for (int i = 0; i < shoppingCart2Array.length; i++) {
          System.out.println(shoppingCart2Array[i]);
       }
