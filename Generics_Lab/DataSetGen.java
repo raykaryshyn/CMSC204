@@ -1,3 +1,10 @@
+/**
+ * Computes the average of a set of data values as a generic class.
+ * Loads only instances of classes that implement Measurable.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class DataSetGen<T extends Measurable> {
     private double sum;
     private T maximum;
