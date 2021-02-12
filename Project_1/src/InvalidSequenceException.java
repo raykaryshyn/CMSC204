@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Exception for passwords that have two or more of the same character in
  * sequence.

@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Exception for passwords that have less than one digit.
  * 

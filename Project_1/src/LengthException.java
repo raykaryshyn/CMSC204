@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Exception for passwords that are less than 6 characters in length.
  * 

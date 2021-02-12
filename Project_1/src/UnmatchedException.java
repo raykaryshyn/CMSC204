@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Exception for a pair of passwords that do not match.
  * 

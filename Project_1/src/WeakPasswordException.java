@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Exception for passwords that are valid, but have less than 10 characters.
  * 
