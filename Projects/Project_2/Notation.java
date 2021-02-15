@@ -49,10 +49,65 @@ public class Notation {
      *                                        invalid.
      */
     public static String convertInfixToPostfix(String infix) throws InvalidNotationFormatException {
-        String postfix = "";
+        NotationQueue<Character> postfix = new NotationQueue<>(infix.length());
+        NotationStack<Character> operatorStack = new NotationStack<>(infix.length());
 
-        //
+        for (int i = 0; i < infix.length(); i++) {
+            char c = infix.charAt(i);
 
-        return postfix;
+            if (c == ' ')
+                continue;
+            else if (Character.isDigit(c)) {
+                postfix.enqueue(c);
+                continue;
+            }
+
+            switch (c) {
+                case '(':
+                    operatorStack.push(c);
+                    break;
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':
+                    while (!operatorStack.isEmpty() && (precedence(c) <= precedence((char) operatorStack.top())))
+                        postfix.enqueue(operatorStack.pop());
+
+                    operatorStack.push(c);
+                    break;
+                case ')':
+                    while (!operatorStack.isEmpty() && operatorStack.top() != '(')
+                        postfix.enqueue(operatorStack.pop());
+
+                    if (!operatorStack.isEmpty())
+                        operatorStack.pop();
+                    else if (operatorStack.isEmpty())
+                        throw new InvalidNotationFormatException();
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        while (!operatorStack.isEmpty())
+            postfix.enqueue(operatorStack.pop());
+
+        return postfix.toString();
+    }
+
+    private static int precedence(char c) {
+        switch (c) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+            case '%':
+                return 2;
+        }
+
+        return -1;
     }
 }
