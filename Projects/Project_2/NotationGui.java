@@ -1,4 +1,3 @@
-package _solution;
 /**
  *MgmCompanyGui, Class representing the GUI for company information
  * @author khandan Monshi
