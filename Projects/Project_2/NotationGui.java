@@ -3,7 +3,7 @@
  * @author khandan Monshi
  */
 
-import java.text.NumberFormat;
+//import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 
 //import MvGuiFx.ButtonEventHandler;
@@ -31,7 +31,7 @@ public class NotationGui extends Application {
 	private Label infixlbl, postfixlbl, postfixlbl2,evalanswerlbl, evalanswer;
 	private RadioButton infixToPostfix, postfixToInfix;
 	private ToggleGroup myToggleGroup;
-	private NumberFormat numFormat = NumberFormat.getNumberInstance();
+	//private NumberFormat numFormat = NumberFormat.getNumberInstance();
 	private Button conversionBtn, evaluationBtn, exitBtn;
 	private Alert alert = new Alert(AlertType.INFORMATION);
 	 
@@ -73,7 +73,7 @@ public class NotationGui extends Application {
 
 				try{
 					String postfixExpr = postfixtxt2.getText();
-					double a = Notation.evaluatePostfixExpression(postfixExpr);
+					//double a = Notation.evaluatePostfixExpression(postfixExpr);
 					evalanswerlbl.setVisible(true);
 					evalanswer.setVisible(true);
 					evalanswer.setText(Double.toString(Notation.evaluatePostfixExpression(postfixExpr)));

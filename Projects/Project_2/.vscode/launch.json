@@ -6,17 +6,11 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
             "name": "Launch NotationGui",
             "request": "launch",
             "vmArgs": "--module-path C:/Users/K-Student/Documents/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "NotationGui",
-            "projectName": "Project_2_3ace88f7"
-        }
+            "projectName": "Project_2_cb04550c"
+        },
     ]
 }
