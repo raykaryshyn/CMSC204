@@ -7,17 +7,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MyStackTest {
-	public MyStack<String> stringS;
+	public NotationStack<String> stringS;
 	public String a="a", b="b", c="c", d="d", e="e", f="f";
 	public ArrayList<String> fill = new ArrayList<String>();
 	
 	// STUDENT: student tests will use the doubleS
-	public MyStack<Double> doubleS;
+	public NotationStack<Double> doubleS;
 	// STUDENT: add variables as needed for your student tests
 	
 	@Before
 	public void setUp() throws Exception {
-		stringS = new MyStack<String>(5);
+		stringS = new NotationStack<String>(5);
 		stringS.push(a);
 		stringS.push(b);
 		stringS.push(c);
@@ -148,7 +148,7 @@ public class MyStackTest {
 		fill.add("banana");
 		fill.add("carrot");
 		//start with an empty queue
-		stringS = new MyStack<String>(5);
+		stringS = new NotationStack<String>(5);
 		//fill with an ArrayList
 		stringS.fill(fill);
 		assertEquals(3,stringS.size());

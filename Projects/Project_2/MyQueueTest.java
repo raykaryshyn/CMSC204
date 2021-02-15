@@ -7,17 +7,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MyQueueTest {
-	public MyQueue<String> stringQ;
+	public NotationQueue<String> stringQ;
 	public String a="a", b="b", c="c", d="d", e="e", f="f";
 	public ArrayList<String> fill = new ArrayList<String>();
 	
 	// STUDENT: student tests will use the doubleQ
-	public MyQueue<Double> doubleQ;
+	public NotationQueue<Double> doubleQ;
 	// STUDENT: add variables as needed for your student tests
 
 	@Before
 	public void setUp() throws Exception {
-		stringQ = new MyQueue<String>(5);
+		stringQ = new NotationQueue<String>(5);
 		stringQ.enqueue(a);
 		stringQ.enqueue(b);
 		stringQ.enqueue(c);
@@ -138,7 +138,7 @@ public class MyQueueTest {
 		fill.add("banana");
 		fill.add("carrot");
 		//start with an empty queue
-		stringQ = new MyQueue<String>(5);
+		stringQ = new NotationQueue<String>(5);
 		//fill with an ArrayList
 		stringQ.fill(fill);
 		assertEquals(3,stringQ.size());
