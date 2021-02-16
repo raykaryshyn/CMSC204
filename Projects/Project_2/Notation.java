@@ -57,15 +57,12 @@ public class Notation {
 
             if (c == ' ')
                 continue;
-            else if (Character.isDigit(c)) {
+            else if (Character.isLetterOrDigit(c)) {
                 postfix.enqueue(c);
                 continue;
             }
 
             switch (c) {
-                case '(':
-                    operatorStack.push(c);
-                    break;
                 case '+':
                 case '-':
                 case '*':
@@ -76,15 +73,22 @@ public class Notation {
 
                     operatorStack.push(c);
                     break;
+                case '(':
+                    operatorStack.push(c);
+                    break;
                 case ')':
+                    // Keep popping the stack and adding to the queue
+                    // until the opening parentheses is found.
                     while (!operatorStack.isEmpty() && operatorStack.top() != '(')
                         postfix.enqueue(operatorStack.pop());
 
-                    if (!operatorStack.isEmpty())
-                        operatorStack.pop();
-                    else if (operatorStack.isEmpty())
+                    // If the stack is empty, then there was no opening parenteses
+                    // and the notation format was invalid.
+                    if (operatorStack.isEmpty())
                         throw new InvalidNotationFormatException();
 
+                    // Get rid of opening parentheses.
+                    operatorStack.pop();
                     break;
                 default:
                     break;
