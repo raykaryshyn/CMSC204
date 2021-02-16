@@ -10,17 +10,66 @@ public class Notation {
     /**
      * Evaluates a postfix expression from a string to a double.
      * 
-     * @param postfixExpr The postfix expression in string format.
+     * @param postfix The postfix expression in string format.
      * @return The evaluation of the postfix expression as a double.
      * @throws InvalidNotationFormatException If the postfix expression format is
      *                                        invalid.
      */
-    public static double evaluatePostfixExpression(String postfixExpr) throws InvalidNotationFormatException {
-        double result;
+    public static double evaluatePostfixExpression(String postfix) throws InvalidNotationFormatException {
+        NotationStack<Double> valueStack = new NotationStack<>(postfix.length());
 
-        result = 0;
+        for (int i = 0; i < postfix.length(); i++) {
+            char c = postfix.charAt(i);
 
-        return result;
+            if (c == ' ')
+                continue;
+            else if (Character.isDigit(c)) {
+                valueStack.push(Double.parseDouble(Character.toString(c)));
+                continue;
+            }
+
+            switch (c) {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':
+                    if (valueStack.size() < 2)
+                        throw new InvalidNotationFormatException();
+
+                    double operand2 = valueStack.pop();
+                    double operand1 = valueStack.pop();
+
+                    switch (c) {
+                        case '+':
+                            valueStack.push(operand1 + operand2);
+                            break;
+                        case '-':
+                            valueStack.push(operand1 - operand2);
+                            break;
+                        case '*':
+                            valueStack.push(operand1 * operand2);
+                            break;
+                        case '/':
+                            valueStack.push(operand1 / operand2);
+                            break;
+                        case '%':
+                            valueStack.push(operand1 % operand2);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (valueStack.size() > 1)
+            throw new InvalidNotationFormatException();
+
+        return valueStack.top();
     }
 
     /**
@@ -32,11 +81,42 @@ public class Notation {
      *                                        invalid.
      */
     public static String convertPostfixToInfix(String postfix) throws InvalidNotationFormatException {
-        String infix = "";
+        NotationStack<String> infix = new NotationStack<>(postfix.length());
 
-        //
+        for (int i = 0; i < postfix.length(); i++) {
+            String c = String.valueOf(postfix.charAt(i));
 
-        return infix;
+            if (c == " ")
+                continue;
+            else if (Character.isLetterOrDigit(c.charAt(0))) {
+                infix.push(c);
+                continue;
+            }
+
+            switch (c) {
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                case "%":
+                    if (infix.size() < 2)
+                        throw new InvalidNotationFormatException();
+
+                    String operand2 = infix.pop();
+                    String operand1 = infix.pop();
+
+                    String result = "(" + operand1 + c + operand2 + ")";
+                    infix.push(result);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (infix.size() > 1)
+            throw new InvalidNotationFormatException();
+
+        return infix.toString();
     }
 
     /**
@@ -68,7 +148,7 @@ public class Notation {
                 case '*':
                 case '/':
                 case '%':
-                    while (!operatorStack.isEmpty() && (precedence(c) <= precedence((char) operatorStack.top())))
+                    while (!operatorStack.isEmpty() && (precedence(c) <= precedence(operatorStack.top())))
                         postfix.enqueue(operatorStack.pop());
 
                     operatorStack.push(c);
