@@ -1,3 +1,9 @@
+/**
+ * A driver class to test iterative/recursive methods in ArrayMethods and StringMethods.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class Driver {
     public static void main(String[] args) {
         int[] array = { 0, 1, 2, 3, 4, 5 };

@@ -1,3 +1,10 @@
+/**
+ * This class has two methods that both display an string with all characters
+ * capitalized. One method achieves this iteratively and the other recursively.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class StringMethods {
     public static void displayUppercase(String a, int first, int last) {
         for (int i = 0; i <= last; i++)

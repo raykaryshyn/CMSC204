@@ -1,3 +1,10 @@
+/**
+ * This class has two methods that both display an array backwards. One method
+ * achieves this iteratively and the other recursively.
+ * 
+ * @author Raymond Karyshyn
+ */
+
 public class ArrayMethods {
     public static void displayBackward(int[] a, int first, int last) {
         for (int i = last; i >= first; i--)
