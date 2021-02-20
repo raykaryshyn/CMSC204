@@ -10,15 +10,15 @@ public class Driver {
             System.out.print(e + " ");
         System.out.print("\nBackwards Iteratively:\t\t");
         ArrayMethods.displayBackward(array, 0, 5);
-        System.out.print("Backwards Recursively:\t\t");
+        System.out.print("\nBackwards Recursively:\t\t");
         ArrayMethods.displayBackwardRecursively(array, 0, 5);
 
         // String Processing
-        System.out.println("\n\\/\\/\\/ - - - STRING PROCESSING - - - \\/\\/\\/");
+        System.out.println("\n\n\\/\\/\\/ - - - STRING PROCESSING - - - \\/\\/\\/");
         System.out.println("Original:\t\t\t" + string);
         System.out.print("'' Iteratively:\t\t\t");
         StringMethods.displayBackward(string, 0, 9);
-        System.out.print("'' Recursively:\t\t\t");
+        System.out.print("\n'' Recursively:\t\t\t");
         StringMethods.displayBackwardRecursively(string, 0, 9);
     }
 }
