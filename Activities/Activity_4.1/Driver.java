@@ -1,5 +1,5 @@
 public class Driver {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int[] array = { 0, 1, 2, 3, 4, 5 };
         String string = "testing...";
 
@@ -16,9 +16,9 @@ public class Driver {
         // String Processing
         System.out.println("\n\n\\/\\/\\/ - - - STRING PROCESSING - - - \\/\\/\\/");
         System.out.println("Original:\t\t\t" + string);
-        System.out.print("'' Iteratively:\t\t\t");
-        StringMethods.displayBackward(string, 0, 9);
-        System.out.print("\n'' Recursively:\t\t\t");
-        StringMethods.displayBackwardRecursively(string, 0, 9);
+        System.out.print("Uppercase Iteratively:\t\t");
+        StringMethods.displayUppercase(string, 0, 9);
+        System.out.print("\nUppercase' Recursively:\t\t");
+        StringMethods.displayUppercaseRecursively(string, 0, 9);
     }
 }
