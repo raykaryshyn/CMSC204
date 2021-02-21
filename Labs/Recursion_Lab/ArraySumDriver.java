@@ -19,6 +19,9 @@ public class ArraySumDriver {
 
 		sum = sumOfArray(myArray, 5);
 		System.out.println(sum);
+
+		// Fibonacci (Driver)
+		System.out.println(fibonacci(10));
 	}
 
 	/**
@@ -35,4 +38,18 @@ public class ArraySumDriver {
 		return (arr[num] + sumOfArray(arr, num - 1));
 	}
 
+	// Fibonacci (Recursive & Dynamic Programming)
+	private static long[] table = new long[10000];
+
+	public static long fibonacci(int n) {
+		if (table[n] != 0)
+			return table[n];
+		else if (n <= 2)
+			return 1;
+
+		long first = fibonacci(n - 1);
+		long second = fibonacci(n - 2);
+		table[n] = first + second;
+		return table[n];
+	}
 }
