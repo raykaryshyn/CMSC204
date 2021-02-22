@@ -12,9 +12,9 @@ public class ArrayMethods {
     }
 
     public static void displayBackwardRecursively(int[] a, int first, int last) {
-        System.out.print(a[last] + " ");
-
-        if (last > first)
+        if (last >= first) {
+            System.out.print(a[last] + " ");
             displayBackwardRecursively(a, first, last - 1);
+        }
     }
 }
