@@ -19,7 +19,7 @@ public class ArraySumDriver {
 		myArray[index++] = 12;
 		myArray[index++] = 6;
 
-		int sum = sumOfArray(myArray, 3);
+		double sum = sumOfArray(myArray, 3);
 		System.out.println(sum);
 
 		myArray[index++] = 7;
@@ -43,15 +43,15 @@ public class ArraySumDriver {
 	/**
 	 * Recursive method for generating sum of values in array
 	 * 
-	 * @param arr array of Integers
+	 * @param arr array of Numbers
 	 * @param num index of array to sum all previous index values (including num)
 	 * @return sum of array values
 	 */
-	public static int sumOfArray(Integer arr[], int num) {
+	public static <T extends Number> double sumOfArray(T arr[], int num) {
 		if (num < 0)
 			return 0;
 
-		return (arr[num] + sumOfArray(arr, num - 1));
+		return arr[num].doubleValue() + sumOfArray(arr, num - 1);
 	}
 
 	/**
