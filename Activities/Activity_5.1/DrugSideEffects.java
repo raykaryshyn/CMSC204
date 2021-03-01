@@ -1,79 +1,43 @@
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.HashMap;
 
-public class DrugSideEffects<K, V> implements Map<K, V> {
-    private Node head;
-
-    @Override
-    public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+@SuppressWarnings("serial")
+public class DrugSideEffects extends HashMap<String, String[]> implements DrugSideEffectsInterface {
+    public DrugSideEffects() {
+        super();
     }
 
-    @Override
-    public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+    public void addDrug(String drug, String[] sideEffects) {
+        super.put(drug, sideEffects);
     }
 
-    @Override
-    public boolean containsKey(Object key) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean containsDrug(String drug) {
+        return super.containsKey(drug);
     }
 
-    @Override
-    public boolean containsValue(Object value) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+    public String[] getSideEffects(String drug) {
+        if (containsDrug(drug)) {
+            String[] sideEffects = new String[get(drug).length];
 
-    @Override
-    public V get(Object key) {
-        // TODO Auto-generated method stub
+            for (int i = 0; i < get(drug).length; i++)
+                sideEffects[i] = get(drug)[i];
+
+            return sideEffects;
+        }
+
         return null;
     }
 
-    @Override
-    public V put(K key, V value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public void display(String drug) {
+        if (containsDrug(drug)) {
+            System.out.println("Drug:\t" + drug);
 
-    @Override
-    public V remove(Object key) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+            System.out.println("Side Effects:");
+            for (String sideEffect : getSideEffects(drug))
+                System.out.println("\t- " + sideEffect);
 
-    @Override
-    public void putAll(Map<? extends K, ? extends V> m) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void clear() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public Set<K> keySet() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Collection<V> values() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Set<Entry<K, V>> entrySet() {
-        // TODO Auto-generated method stub
-        return null;
+            System.out.println();
+        } else {
+            System.out.println("'" + drug + "'" + " is not found in our database.");
+        }
     }
 }
