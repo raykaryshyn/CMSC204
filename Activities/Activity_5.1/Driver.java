@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Driver {
     public static void main(String args[]) {
         DrugSideEffects drugDatabase = new DrugSideEffects();
@@ -12,7 +14,19 @@ public class Driver {
         drugDatabase.addDrug("Amoxicillin", amoxicillin_sideEffects);
         drugDatabase.addDrug("Lisinopril", lisinopril_sideEffects);
 
-        drugDatabase.display("Amoxicillin");
-        drugDatabase.display("Lisinopril");
+        System.out.println("The drug database contains " + drugDatabase.size() + " entries.\n");
+
+        Iterator<String> drugDatabaseIterator = drugDatabase.keySet().iterator();
+        while (drugDatabaseIterator.hasNext()) {
+            String drug = drugDatabaseIterator.next();
+            drugDatabase.display(drug);
+        }
+
+        System.out.println("Clearing the drug database...");
+        drugDatabase.clear();
+        if (drugDatabase.isEmpty())
+            System.out.println("Cleared.");
+        else
+            System.out.println("System failed to clear the drug database.");
     }
 }

@@ -10,8 +10,20 @@ public class DrugSideEffects extends HashMap<String, String[]> implements DrugSi
         super.put(drug, sideEffects);
     }
 
+    public String[] removeDrug(String drug) {
+        return super.remove(drug);
+    }
+
     public boolean containsDrug(String drug) {
         return super.containsKey(drug);
+    }
+
+    public String[] addSideEffects(String drug, String[] sideEffects) {
+        if (containsDrug(drug)) {
+            return super.replace(drug, sideEffects);
+        }
+
+        return null;
     }
 
     public String[] getSideEffects(String drug) {
@@ -37,7 +49,7 @@ public class DrugSideEffects extends HashMap<String, String[]> implements DrugSi
 
             System.out.println();
         } else {
-            System.out.println("'" + drug + "'" + " is not found in our database.");
+            System.out.println("'" + drug + "'" + " is not found in the database.");
         }
     }
 }
