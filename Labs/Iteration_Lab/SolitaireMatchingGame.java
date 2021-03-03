@@ -2,6 +2,13 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
+/**
+ * Implementation of a solitaire matching game, where an array of 20 random
+ * intergers is generated and consecutive pairs are removed when iterating
+ * through the array.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class SolitaireMatchingGame {
     public static void main(String[] args) {
         int passes = 0, pairsRemoved = 0;
