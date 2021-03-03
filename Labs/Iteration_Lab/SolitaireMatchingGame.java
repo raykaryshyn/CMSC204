@@ -19,7 +19,7 @@ public class SolitaireMatchingGame {
         for (int i = 0; i < MAX_SIZE; i++)
             list.add(i, random.nextInt(90) + 10);
 
-        System.out.println("Beginning list: " + list);
+        System.out.println("Beginning list:\t" + list);
 
         boolean removedPair = true;
         while (removedPair) {
@@ -41,13 +41,17 @@ public class SolitaireMatchingGame {
                 }
             }
 
-            if (removedPair)
-                passes++;
+            passes++;
         }
 
-        System.out.println("\nPasses through the list: " + passes);
-        System.out.println("Pairs removed: " + pairsRemoved);
+        System.out.println("\n" + passes + " passes through the list.");
+        System.out.println(pairsRemoved + " pairs removed.");
 
-        System.out.println("\nEnding list: " + list);
+        System.out.println("\nEnding list:\t" + list);
+
+        if (list.size() == 0)
+            System.out.println("\nYou won the game!");
+        else
+            System.out.println("\nYou lost the game.");
     }
 }
