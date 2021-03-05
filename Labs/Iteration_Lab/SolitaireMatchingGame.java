@@ -11,7 +11,7 @@ import java.util.ListIterator;
  */
 public class SolitaireMatchingGame {
     public static void main(String[] args) {
-        int iterations = 0, pairsRemoved = 0;
+        int passes = 0, pairsRemoved = 0;
 
         final int MAX_SIZE = 20;
         ArrayList<Integer> list = new ArrayList<Integer>(MAX_SIZE);
@@ -41,10 +41,10 @@ public class SolitaireMatchingGame {
                 }
             }
 
-            iterations++;
+            passes++;
         }
 
-        System.out.println("\n" + iterations + " iterations through the list.");
+        System.out.println("\n" + passes + " passes through the list.");
         System.out.println(pairsRemoved + " pairs removed.");
 
         System.out.println("\nEnding list:\t" + list);
