@@ -94,46 +94,47 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * (do not use equals) to find those elements that match the target. Do not
      * implement this method using iterators.
      * 
-     * @param targetData The data element to be removed.
+     * @param target     Data The data element to be removed.
      * @param comparator The comparator to determine equality of data elements.
      * @return Data element or null.
      */
     public BasicDoubleLinkedList<T> remove(T targetData, Comparator<T> comparator) {
+        BasicDoubleLinkedList<T> result = null;
+
         if (head != null) {
-            if (comparator.compare(head.getData(), targetData) == 0) {
-                if (head.getNext() == null) {
+            if (comparator.compare(head.data, targetData) == 0) {
+                if (head.next == null)
                     head = tail = null;
-                } else {
+                else {
                     head = head.getNext();
                     head.setPrevious(null);
                 }
 
                 size--;
             } else {
-                // TODO: Clean up & test
                 Node current = head;
 
                 while (current.getNext() != null) {
                     if (comparator.compare(current.getNext().getData(), targetData) == 0) {
                         current.setNext(current.getNext().getNext());
 
-                        if (current.getNext() == null) {
+                        if (current.getNext() == null)
                             tail = current;
-                            size--;
-                            return this;
-                        } else {
+                        else
                             current.getNext().setPrevious(current);
-                            size--;
-                            return this;
-                        }
+
+                        size--;
+                        break;
                     }
 
-                    current = current.next;
+                    current = current.getNext();
                 }
             }
+
+            result = this;
         }
 
-        return this;
+        return result;
     }
 
     /**
@@ -166,8 +167,15 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * @return An arraylist of the items in the list.
      */
     public ArrayList<T> toArrayList() {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<T> arrayList = new ArrayList<>();
+        Node current = head;
+
+        while (current != null) {
+            arrayList.add(current.getData());
+            current = current.getNext();
+        }
+
+        return arrayList;
     }
 
     /**
