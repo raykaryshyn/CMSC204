@@ -72,7 +72,10 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * @return The data element or null.
      */
     public T getFirst() {
-        return head.getData();
+        if (head != null)
+            return head.getData();
+
+        return null;
     }
 
     /**
@@ -83,7 +86,10 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * @return The data element or null.
      */
     public T getLast() {
-        return tail.getData();
+        if (tail != null)
+            return tail.getData();
+
+        return null;
     }
 
     /**
@@ -99,7 +105,7 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * @return Data element or null.
      */
     public BasicDoubleLinkedList<T> remove(T targetData, Comparator<T> comparator) {
-        BasicDoubleLinkedList<T> result = null;
+        boolean removed = false;
 
         if (head != null) {
             if (comparator.compare(head.data, targetData) == 0) {
@@ -110,8 +116,7 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
                     head.setPrevious(null);
                 }
 
-                size--;
-                result = this;
+                removed = true;
             } else {
                 Node current = head.getNext();
 
@@ -125,8 +130,7 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
                             current.getNext().setPrevious(current.getPrevious());
                         }
 
-                        size--;
-                        result = this;
+                        removed = true;
                         break;
                     }
 
@@ -135,7 +139,12 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
             }
         }
 
-        return result;
+        if (removed) {
+            size--;
+            return this;
+        }
+
+        return null;
     }
 
     /**
