@@ -103,7 +103,7 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
 
         if (head != null) {
             if (comparator.compare(head.data, targetData) == 0) {
-                if (head.next == null)
+                if (head.getNext() == null)
                     head = tail = null;
                 else {
                     head = head.getNext();
@@ -111,27 +111,28 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
                 }
 
                 size--;
+                result = this;
             } else {
-                Node current = head;
+                Node current = head.getNext();
 
-                while (current.getNext() != null) {
-                    if (comparator.compare(current.getNext().getData(), targetData) == 0) {
-                        current.setNext(current.getNext().getNext());
-
-                        if (current.getNext() == null)
-                            tail = current;
-                        else
-                            current.getNext().setPrevious(current);
+                while (current != null) {
+                    if (comparator.compare(current.getData(), targetData) == 0) {
+                        if (current.getNext() == null) {
+                            tail = current.getPrevious();
+                            tail.setNext(null);
+                        } else {
+                            current.getPrevious().setNext(current.getNext());
+                            current.getNext().setPrevious(current.getPrevious());
+                        }
 
                         size--;
+                        result = this;
                         break;
                     }
 
                     current = current.getNext();
                 }
             }
-
-            result = this;
         }
 
         return result;
