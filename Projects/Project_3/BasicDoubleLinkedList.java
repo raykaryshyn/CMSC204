@@ -154,8 +154,13 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * @return Data element or null.
      */
     public T retrieveFirstElement() {
-        // TODO Auto-generated method stub
-        return null;
+        if (head == null)
+            return null;
+
+        T firstElement = head.getData();
+        head = head.getNext();
+        head.setPrevious(null);
+        return firstElement;
     }
 
     /**
@@ -166,8 +171,13 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
      * @return Data element or null.
      */
     public T retrieveLastElement() {
-        // TODO Auto-generated method stub
-        return null;
+        if (tail == null)
+            return null;
+
+        T lastElement = tail.getData();
+        tail = tail.getPrevious();
+        tail.setNext(null);
+        return lastElement;
     }
 
     /**
@@ -254,34 +264,41 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
 
     private class MyIterator implements ListIterator<T> {
         private Node current;
-        private int size;
 
         public MyIterator() {
-            current = new Node(null, null, head);
+            current = new Node(null, head, null);
         }
 
         @Override
         public boolean hasNext() {
-            // TODO Auto-generated method stub
-            return false;
+            return current.getNext() != null;
         }
 
         @Override
         public T next() {
-            // TODO Auto-generated method stub
-            return null;
+            if (!hasNext())
+                throw new NoSuchElementException("There is no next element.");
+            else {
+                current.setPrevious(current.getNext());
+                current.setNext(current.getPrevious().getNext());
+                return current.getPrevious().getData();
+            }
         }
 
         @Override
         public boolean hasPrevious() {
-            // TODO Auto-generated method stub
-            return false;
+            return current.getPrevious() != null;
         }
 
         @Override
         public T previous() {
-            // TODO Auto-generated method stub
-            return null;
+            if (!hasPrevious())
+                throw new NoSuchElementException("There is no previous element.");
+            else {
+                current.setNext(current.getPrevious());
+                current.setPrevious(current.getNext().getPrevious());
+                return current.getNext().getData();
+            }
         }
 
         @Override
