@@ -3,13 +3,15 @@ import java.lang.UnsupportedOperationException;
 import java.util.ListIterator;
 
 public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
+    private Comparator<T> comparator = null;
+
     /**
      * Creates an empty list that is associated with the specified comparator.
      * 
      * @param comparator2 Comparator to compare data elements.
      */
     public SortedDoubleLinkedList(Comparator<T> comparator2) {
-
+        this.comparator = comparator2;
     }
 
     /**
@@ -23,8 +25,37 @@ public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
      * @return A reference to the current object.
      */
     public SortedDoubleLinkedList<T> add(T data) {
-        // TODO Auto-generated method stub
-        return null;
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = tail = newNode;
+            size++;
+        } else if (comparator.compare(head.getData(), data) > 0)
+            super.addToFront(data);
+        else if (comparator.compare(tail.getData(), data) < 0)
+            super.addToEnd(data);
+        else {
+            Node current = head;
+
+            while (current != null) {
+                if (comparator.compare(current.getData(), data) <= 0) {
+                    Node before = current;
+                    Node after = current.getNext();
+
+                    after.setPrevious(newNode);
+                    before.setNext(newNode);
+
+                    newNode.setNext(after);
+                    newNode.setPrevious(before);
+                }
+
+                current = current.getNext();
+            }
+
+            size++;
+        }
+
+        return this;
     }
 
     /**
@@ -37,8 +68,7 @@ public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
      */
     @Override
     public BasicDoubleLinkedList<T> addToEnd(T data) throws UnsupportedOperationException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted list");
     }
 
     /**
@@ -51,8 +81,7 @@ public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
      */
     @Override
     public BasicDoubleLinkedList<T> addToFront(T data) throws UnsupportedOperationException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("Invalid operation for sorted list");
     }
 
     /**
@@ -60,11 +89,14 @@ public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
      * 
      * @param data       The data element to be removed.
      * @param comparator The comparator to determine equality of data elements.
+     * @return Data element or null.
      */
     @Override
     public SortedDoubleLinkedList<T> remove(T data, Comparator<T> comparator) {
-        // TODO Auto-generated method stub
-        return null;
+        if (super.remove(data, comparator) == null)
+            return null;
+
+        return this;
     }
 
     /**
@@ -74,7 +106,6 @@ public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
      */
     @Override
     public ListIterator<T> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return super.iterator();
     }
 }

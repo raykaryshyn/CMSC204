@@ -6,8 +6,8 @@ import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 
 public class BasicDoubleLinkedList<T> implements Iterable<T> {
-    private Node head, tail;
-    int size;
+    protected Node head, tail;
+    protected int size;
 
     public BasicDoubleLinkedList() {
         head = tail = null;
@@ -222,42 +222,42 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
         return iterator;
     }
 
-    private class Node {
+    protected class Node {
         private T data;
         private Node next;
         private Node previous;
 
-        private Node(T data) {
+        protected Node(T data) {
             this(data, null, null);
         }
 
-        private Node(T data, Node next, Node previous) {
+        protected Node(T data, Node next, Node previous) {
             this.data = data;
             this.next = next;
             this.previous = previous;
         }
 
-        private T getData() {
+        protected T getData() {
             return data;
         }
 
-        private void setData(T data) {
+        protected void setData(T data) {
             this.data = data;
         }
 
-        private Node getNext() {
+        protected Node getNext() {
             return next;
         }
 
-        private void setNext(Node next) {
+        protected void setNext(Node next) {
             this.next = next;
         }
 
-        private Node getPrevious() {
+        protected Node getPrevious() {
             return previous;
         }
 
-        private void setPrevious(Node previous) {
+        protected void setPrevious(Node previous) {
             this.previous = previous;
         }
     }
