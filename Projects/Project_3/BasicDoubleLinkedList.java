@@ -5,6 +5,27 @@ import java.util.Comparator;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
 
+/**
+ * This generic double-linked list relies on a head (reference to first element
+ * of the list) and tail (reference to the last element of the list). Both are
+ * set to null when the list is empty. Both point to the same element when there
+ * is only one element in the list. A node structure has only three fields: data
+ * and the prev and next references. The class must only define the following
+ * entities: an inner class Node, an inner class that implements ListIterator
+ * (for the iterator method), head and tail references and an integer
+ * representing the list size. However only the hasNext(), next(), hasPrevious()
+ * and previous() methods of ListIterator need to be implemented, all other
+ * methods can throw the UnsupportedOperationException:
+ * 
+ * public void remove() throws UnsupportedOperationException{
+ * 
+ * throw new UnsupportedOperationException();}
+ * 
+ * All the entities are defined as protected so they can be accessed by the
+ * subclasses.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class BasicDoubleLinkedList<T> implements Iterable<T> {
     protected Node head, tail;
     protected int size;

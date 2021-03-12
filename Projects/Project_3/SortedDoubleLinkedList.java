@@ -2,6 +2,12 @@ import java.util.Comparator;
 import java.lang.UnsupportedOperationException;
 import java.util.ListIterator;
 
+/**
+ * Implements a generic sorted double list using a provided Comparator. It
+ * extends BasicDoubleLinkedList class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
     private Comparator<T> comparator = null;
 
