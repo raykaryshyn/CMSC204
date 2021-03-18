@@ -1,0 +1,43 @@
+Purpose: Returns name of company making the bid
+Parameters: 
+Pseudocode: public String getCompanyName();
+
+Purpose: Returns description of the air conditioner of the particular bid
+Parameters: 
+Pseudocode: public String getUnitDescription();
+
+Purpose: Returns the performance of the air conditioner.
+Parameters: 
+Pseudocode: public String getUnitPerformance();
+
+Purpose: Returns unit price of the air conditioner of the particular bid
+Parameters: 
+Pseudocode: public double unitCost();
+
+Purpose: Returns cost for installing an air conditioner by the particular bid
+Parameters: 
+Pseudocode: public double installationCost();
+
+
+Bid (CRC Card)
+    Responsibilities
+        ...
+
+    Collaborations
+        ...
+
+
+Bid (UML Class Diagram)
+    Properties
+        -companyName : String
+        -unitDescription : String
+        -unitPerformance : String
+        -unitCost : double
+        -installationCost : double
+
+    Methods
+        +getCompanyName() : String
+        +getUnitDescription() : String
+        +getUnitPerformance() : String
+        +getUnitCost() : double
+        +getInstallationCost() : double

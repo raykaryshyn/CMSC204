@@ -1,0 +1,7 @@
+From this week's lecture and activity, I learned that an abstract data type (ADT) is a model describing a data set and potential operations to perform on the data without detailing the implementation of the operations. Similarly, an ADT bag is a container of objects of the same (or related) data types, where the objects can be stored in any order, and duplicates can exist. In this activity, an ADT for bids on air conditioner installations and an ADT bag for a collection of bids were modeled with Java interfaces.
+
+A challenge I faced while completing this activity was coming up with the operations needed for the collection of bids. For help with this part, I referred to the Java interface in Listing 1-1 for a basic bag of objects, and I used similar methods such as add(), remove(), and clear().
+
+I thought it was good practice to design a bag that depended on an ADT I also had to design. It was interesting how I could connect the two data types with Java interfaces without actually implementing them.
+
+Do you think there are any other ADTs that could have been used effectively in this activity?

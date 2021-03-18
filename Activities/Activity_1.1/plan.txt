@@ -1,0 +1,22 @@
+bid
+    company name
+    unit description
+    unit performance
+    unit cost
+    installation cost
+
+    design ADT
+        purpose
+        parameters
+        pseudocode of header
+        note
+            companies can make multiple bids, each with a different unit
+            use javadoc comments
+
+    design another ADT
+        represent a collection of bids
+        include methods to search bids by price & performance
+
+    complete interface for the ADTs
+        review "Abstract Data type:Bag" table from our text
+        review Listing 1-1 starting on p. 37
