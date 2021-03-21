@@ -1,0 +1,4 @@
+InOrder         = ((48 - (7 % 2)) / 24) * ((18 - (5*2)) + 12)
+PostOrder       = {48, 7, 2, %, -, 24, /, 18, 5, 2, *, -, 12, +, *}
+IntegerDivision = 20
+FloatDivision   = 39.1667

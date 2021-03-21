@@ -1,0 +1,19 @@
+a)  What value can you use as a dummy value, if the binary tree is not complete?
+        null
+
+b)  Show the contents of the array, given the tree.
+    0   14
+    1   73
+    2   21
+    3   7
+    4   null
+    5   19
+    6   6
+    7   null
+    8   51
+    9   null
+    10  null
+    11  null
+    12  null
+    13  null
+    14  45
