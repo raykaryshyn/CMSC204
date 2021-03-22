@@ -47,6 +47,18 @@ public class SortedDoubleLinkedList_STUDENT_Test {
     }
 
     @Test
+    public void myTest1() {
+        sortedLinkedString.add("Abbie");
+        sortedLinkedString.add("Ray");
+        sortedLinkedString.add("Zeke");
+        sortedLinkedString.add("Johnny");
+        sortedLinkedString.add("Mike");
+        sortedLinkedString.add("Zumba");
+
+        System.out.println(sortedLinkedString.toArrayList());
+    }
+
+    /* @Test
     public void testAddToEnd() {
         try {
             sortedLinkedString.addToEnd("Hello");
@@ -261,7 +273,7 @@ public class SortedDoubleLinkedList_STUDENT_Test {
         assertEquals(f, sortedLinkedCar.getFirst());
         assertEquals(b, sortedLinkedCar.getLast());
         assertEquals(2, sortedLinkedCar.getSize());
-    }
+    } */
 
     private class StringComparator implements Comparator<String> {
 
