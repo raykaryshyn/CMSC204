@@ -55,6 +55,17 @@ public class SortedDoubleLinkedList_STUDENT_Test {
         sortedLinkedString.add("Mike");
         sortedLinkedString.add("Zumba");
 
+        sortedLinkedString.remove("Johnny", comparator);
+        System.out.println(sortedLinkedString.toArrayList());
+        sortedLinkedString.remove("Ray", comparator);
+        System.out.println(sortedLinkedString.toArrayList());
+        sortedLinkedString.remove("Zeke", comparator);
+        System.out.println(sortedLinkedString.toArrayList());
+        sortedLinkedString.remove("Abbie", comparator);
+        System.out.println(sortedLinkedString.toArrayList());
+        sortedLinkedString.retrieveLastElement();
+        System.out.println(sortedLinkedString.toArrayList());
+        sortedLinkedString.retrieveFirstElement();
         System.out.println(sortedLinkedString.toArrayList());
     }
 

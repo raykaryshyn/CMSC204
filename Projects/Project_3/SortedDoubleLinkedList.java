@@ -36,30 +36,23 @@ public class SortedDoubleLinkedList<T> extends BasicDoubleLinkedList<T> {
         if (head == null) {
             head = tail = newNode;
             size++;
-            System.out.println("Added to empty. " + data);
-        } else if (comparator.compare(head.getData(), data) > 0) {
-            System.out.println("Less than head ('" + head.getData() + "'). " + data);
+        } else if (comparator.compare(head.getData(), data) >= 0)
             super.addToFront(data);
-        } else if (comparator.compare(tail.getData(), data) < 0) {
-            System.out.println("Greater than tail ('" + tail.getData() + "'). " + data);
+        else if (comparator.compare(tail.getData(), data) < 0)
             super.addToEnd(data);
-        } else {
+        else {
             Node current = head;
 
             while (current != null) {
-                System.out.println("Current ('" + current.getData() + "'). " + data + " " + comparator.compare(current.getData(), data));
-
                 if (comparator.compare(current.getData(), data) >= 0) {
                     Node before = current.getPrevious();
                     Node after = current;
 
                     before.setNext(newNode);
                     after.setPrevious(newNode);
-
                     newNode.setPrevious(before);
                     newNode.setNext(after);
 
-                    System.out.println("Add " + data + " and break.");
                     break;
                 }
 

@@ -179,8 +179,14 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
             return null;
 
         T firstElement = head.getData();
+
         head = head.getNext();
-        head.setPrevious(null);
+        if (head != null)
+            head.setPrevious(null);
+        else
+            tail = null;
+
+        size--;
         return firstElement;
     }
 
@@ -196,8 +202,14 @@ public class BasicDoubleLinkedList<T> implements Iterable<T> {
             return null;
 
         T lastElement = tail.getData();
+
         tail = tail.getPrevious();
-        tail.setNext(null);
+        if (tail != null)
+            tail.setNext(null);
+        else
+            head = null;
+
+        size--;
         return lastElement;
     }
 
