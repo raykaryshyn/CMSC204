@@ -169,7 +169,6 @@ public class BasicDoubleLinkedList_STUDENT_Test {
         assertEquals(d, iteratorCar.next());
 
         try {
-            // no more elements in list
             iteratorCar.next();
             assertTrue("Did not throw a NoSuchElementException", false);
         } catch (NoSuchElementException e) {
@@ -232,19 +231,16 @@ public class BasicDoubleLinkedList_STUDENT_Test {
 
     @Test
     public void testRemove() {
-        // remove the first
         assertEquals(b, linkedPerson.getFirst());
         assertEquals(c, linkedPerson.getLast());
         linkedPerson.addToFront(a);
         assertEquals(a, linkedPerson.getFirst());
         linkedPerson.remove(a, comparatorPerson);
         assertEquals(b, linkedPerson.getFirst());
-        // remove from the end of the list
         linkedPerson.addToEnd(d);
         assertEquals(d, linkedPerson.getLast());
         linkedPerson.remove(d, comparatorPerson);
         assertEquals(c, linkedPerson.getLast());
-        // remove from middle of list
         linkedPerson.addToFront(a);
         assertEquals(a, linkedPerson.getFirst());
         assertEquals(c, linkedPerson.getLast());

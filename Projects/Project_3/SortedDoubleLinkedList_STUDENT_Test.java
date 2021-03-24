@@ -11,17 +11,17 @@ import org.junit.Test;
 public class SortedDoubleLinkedList_STUDENT_Test {
     SortedDoubleLinkedList<String> sortedLinkedString;
     SortedDoubleLinkedList<Double> sortedLinkedDouble;
-    SortedDoubleLinkedList<Car> sortedLinkedCar;
+    SortedDoubleLinkedList<Course> sortedLinkedCourse;
     StringComparator comparator;
     DoubleComparator comparatorD;
-    CarComparator comparatorCar;
+    CourseComparator comparatorCourse;
 
-    public Car a = new Car("Ford", "F150", 2005);
-    public Car b = new Car("Jeep", "Renegade", 2005);
-    public Car c = new Car("Honda", "Civic", 2005);
-    public Car d = new Car("Subaru", "Outback", 2005);
-    public Car e = new Car("Chevrolet", "Silverado", 2005);
-    public Car f = new Car("Chrysler", "PTCruiser", 2005);
+    public Course a = new Course("Abe", "Spanish 1", 1234);
+    public Course b = new Course("Bob", "Spanish 2", 2345);
+    public Course c = new Course("Cook", "Computer Science 1", 3456);
+    public Course d = new Course("Davis", "Computer Science 2", 4567);
+    public Course e = new Course("Ed", "Math", 5678);
+    public Course f = new Course("Frank", "History", 6789);
 
     @Before
     public void setUp() throws Exception {
@@ -31,48 +31,24 @@ public class SortedDoubleLinkedList_STUDENT_Test {
         comparatorD = new DoubleComparator();
         sortedLinkedDouble = new SortedDoubleLinkedList<Double>(comparatorD);
 
-        comparatorCar = new CarComparator();
-        sortedLinkedCar = new SortedDoubleLinkedList<Car>(comparatorCar);
-
+        comparatorCourse = new CourseComparator();
+        sortedLinkedCourse = new SortedDoubleLinkedList<Course>(comparatorCourse);
     }
 
     @After
     public void tearDown() throws Exception {
         comparator = null;
         comparatorD = null;
-        comparatorCar = null;
+        comparatorCourse = null;
         sortedLinkedString = null;
         sortedLinkedDouble = null;
-        sortedLinkedCar = null;
+        sortedLinkedCourse = null;
     }
 
     @Test
-    public void myTest1() {
-        sortedLinkedString.add("Abbie");
-        sortedLinkedString.add("Ray");
-        sortedLinkedString.add("Zeke");
-        sortedLinkedString.add("Johnny");
-        sortedLinkedString.add("Mike");
-        sortedLinkedString.add("Zumba");
-
-        sortedLinkedString.remove("Johnny", comparator);
-        System.out.println(sortedLinkedString.toArrayList());
-        sortedLinkedString.remove("Ray", comparator);
-        System.out.println(sortedLinkedString.toArrayList());
-        sortedLinkedString.remove("Zeke", comparator);
-        System.out.println(sortedLinkedString.toArrayList());
-        sortedLinkedString.remove("Abbie", comparator);
-        System.out.println(sortedLinkedString.toArrayList());
-        sortedLinkedString.retrieveLastElement();
-        System.out.println(sortedLinkedString.toArrayList());
-        sortedLinkedString.retrieveFirstElement();
-        System.out.println(sortedLinkedString.toArrayList());
-    }
-
-    /* @Test
-    public void testAddToEnd() {
+    public void testAddToFront() {
         try {
-            sortedLinkedString.addToEnd("Hello");
+            sortedLinkedString.addToFront("Hi, Ray!");
             assertTrue("Did not throw an UnsupportedOperationException", false);
         } catch (UnsupportedOperationException e) {
             assertTrue("Successfully threw an UnsupportedOperationException", true);
@@ -82,9 +58,9 @@ public class SortedDoubleLinkedList_STUDENT_Test {
     }
 
     @Test
-    public void testAddToFront() {
+    public void testAddToEnd() {
         try {
-            sortedLinkedString.addToFront("Hello");
+            sortedLinkedString.addToEnd("Hi, Ray!");
             assertTrue("Did not throw an UnsupportedOperationException", false);
         } catch (UnsupportedOperationException e) {
             assertTrue("Successfully threw an UnsupportedOperationException", true);
@@ -95,104 +71,98 @@ public class SortedDoubleLinkedList_STUDENT_Test {
 
     @Test
     public void testIteratorSuccessfulNext() {
-        sortedLinkedCar.add(a);
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(c);
-        sortedLinkedCar.add(d);
-        ListIterator<Car> iterator = sortedLinkedCar.iterator();
+        sortedLinkedCourse.add(c);
+        sortedLinkedCourse.add(d);
+        sortedLinkedCourse.add(a);
+        sortedLinkedCourse.add(b);
+        ListIterator<Course> iterator = sortedLinkedCourse.iterator();
         assertEquals(true, iterator.hasNext());
         assertEquals(a, iterator.next());
-        assertEquals(c, iterator.next());
         assertEquals(b, iterator.next());
+        assertEquals(c, iterator.next());
         assertEquals(true, iterator.hasNext());
     }
 
     @Test
     public void testIteratorSuccessfulStringPrevious() {
-        sortedLinkedString.add("Begin");
-        sortedLinkedString.add("World");
-        sortedLinkedString.add("Hello");
-        sortedLinkedString.add("Zebra");
+        sortedLinkedString.add("Hi, Ray!");
+        sortedLinkedString.add("How ya doin'?");
+        sortedLinkedString.add("Are the tests workin'?");
+        sortedLinkedString.add("See ya later...");
         ListIterator<String> iterator = sortedLinkedString.iterator();
         assertEquals(true, iterator.hasNext());
-        assertEquals("Begin", iterator.next());
-        assertEquals("Hello", iterator.next());
-        assertEquals("World", iterator.next());
-        assertEquals("Zebra", iterator.next());
+        assertEquals("Are the tests workin'?", iterator.next());
+        assertEquals("Hi, Ray!", iterator.next());
+        assertEquals("How ya doin'?", iterator.next());
+        assertEquals("See ya later...", iterator.next());
         assertEquals(true, iterator.hasPrevious());
-        assertEquals("Zebra", iterator.previous());
-        assertEquals("World", iterator.previous());
-        assertEquals("Hello", iterator.previous());
+        assertEquals("See ya later...", iterator.previous());
+        assertEquals("How ya doin'?", iterator.previous());
+        assertEquals("Hi, Ray!", iterator.previous());
     }
 
     @Test
-    public void testIteratorSuccessfulCarPrevious() {
-        sortedLinkedCar.add(e);
-        sortedLinkedCar.add(c);
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(d);
-        // ArrayList<Car> carList = sortedLinkedCar.toArrayList();
-        // alphabetic order: e f a c b d
-        ListIterator<Car> iterator = sortedLinkedCar.iterator();
+    public void testIteratorSuccessfulCoursePrevious() {
+        sortedLinkedCourse.add(e);
+        sortedLinkedCourse.add(c);
+        sortedLinkedCourse.add(b);
+        sortedLinkedCourse.add(d);
+        ListIterator<Course> iterator = sortedLinkedCourse.iterator();
         assertEquals(true, iterator.hasNext());
-        assertEquals(e, iterator.next());
-        assertEquals(c, iterator.next());
         assertEquals(b, iterator.next());
+        assertEquals(c, iterator.next());
         assertEquals(d, iterator.next());
+        assertEquals(e, iterator.next());
         assertEquals(true, iterator.hasPrevious());
+        assertEquals(e, iterator.previous());
         assertEquals(d, iterator.previous());
-        assertEquals(b, iterator.previous());
         assertEquals(c, iterator.previous());
     }
 
     @Test
     public void testIteratorSuccessfulDoubleNext() {
-        sortedLinkedDouble.add(Double.valueOf(8));
-        sortedLinkedDouble.add(Double.valueOf(6));
-        sortedLinkedDouble.add(Double.valueOf(1));
-        sortedLinkedDouble.add(Double.valueOf(2));
+        sortedLinkedDouble.add(Double.valueOf(1000));
+        sortedLinkedDouble.add(Double.valueOf(10000));
+        sortedLinkedDouble.add(Double.valueOf(10));
+        sortedLinkedDouble.add(Double.valueOf(-9));
         ListIterator<Double> iterator = sortedLinkedDouble.iterator();
         assertEquals(true, iterator.hasNext());
-        assertEquals(Double.valueOf(1), iterator.next());
-        assertEquals(Double.valueOf(2), iterator.next());
-        assertEquals(Double.valueOf(6), iterator.next());
+        assertEquals(Double.valueOf(-9), iterator.next());
+        assertEquals(Double.valueOf(10), iterator.next());
+        assertEquals(Double.valueOf(1000), iterator.next());
         assertEquals(true, iterator.hasNext());
     }
 
     @Test
     public void testIteratorSuccessfulDoublePrevious() {
-        sortedLinkedDouble.add(Double.valueOf(5));
-        sortedLinkedDouble.add(Double.valueOf(10));
-        sortedLinkedDouble.add(Double.valueOf(8));
-        sortedLinkedDouble.add(Double.valueOf(2));
+        sortedLinkedDouble.add(Double.valueOf(999));
+        sortedLinkedDouble.add(Double.valueOf(9));
+        sortedLinkedDouble.add(Double.valueOf(99999));
+        sortedLinkedDouble.add(Double.valueOf(9999));
         ListIterator<Double> iterator = sortedLinkedDouble.iterator();
-        assertEquals(Double.valueOf(2), iterator.next());
-        assertEquals(Double.valueOf(5), iterator.next());
-        assertEquals(Double.valueOf(8), iterator.next());
+        assertEquals(Double.valueOf(9), iterator.next());
+        assertEquals(Double.valueOf(999), iterator.next());
+        assertEquals(Double.valueOf(9999), iterator.next());
         assertEquals(true, iterator.hasPrevious());
-        // assertEquals(Double.valueOf(10), iterator.previous());
-        assertEquals(Double.valueOf(8), iterator.previous());
+        assertEquals(Double.valueOf(9999), iterator.previous());
         assertEquals(true, iterator.hasPrevious());
     }
 
     @Test
     public void testIteratorNoSuchElementException() {
-        sortedLinkedCar.add(e);
-        sortedLinkedCar.add(c);
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(d);
-        // ArrayList<Car> carList = sortedLinkedCar.toArrayList();
-        // alphabetic order: e f a c b d
-        ListIterator<Car> iterator = sortedLinkedCar.iterator();
+        sortedLinkedCourse.add(e);
+        sortedLinkedCourse.add(c);
+        sortedLinkedCourse.add(b);
+        sortedLinkedCourse.add(d);
+        ListIterator<Course> iterator = sortedLinkedCourse.iterator();
 
         assertEquals(true, iterator.hasNext());
-        assertEquals(e, iterator.next());
-        assertEquals(c, iterator.next());
         assertEquals(b, iterator.next());
-        assertEquals(true, iterator.hasNext());
+        assertEquals(c, iterator.next());
         assertEquals(d, iterator.next());
+        assertEquals(true, iterator.hasNext());
+        assertEquals(e, iterator.next());
         try {
-            // no more elements in list
             iterator.next();
             assertTrue("Did not throw a NoSuchElementException", false);
         } catch (NoSuchElementException e) {
@@ -204,16 +174,13 @@ public class SortedDoubleLinkedList_STUDENT_Test {
 
     @Test
     public void testIteratorUnsupportedOperationExceptionString() {
-        sortedLinkedCar.add(e);
-        sortedLinkedCar.add(c);
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(d);
-        // ArrayList<Car> carList = sortedLinkedCar.toArrayList();
-        // alphabetic order: e f a c b d
-        ListIterator<Car> iterator = sortedLinkedCar.iterator();
+        sortedLinkedCourse.add(e);
+        sortedLinkedCourse.add(c);
+        sortedLinkedCourse.add(b);
+        sortedLinkedCourse.add(d);
+        ListIterator<Course> iterator = sortedLinkedCourse.iterator();
 
         try {
-            // remove is not supported for the iterator
             iterator.remove();
             assertTrue("Did not throw a UnsupportedOperationException", false);
         } catch (UnsupportedOperationException e) {
@@ -224,73 +191,64 @@ public class SortedDoubleLinkedList_STUDENT_Test {
     }
 
     @Test
-    public void testAddCar() {
-        // alphabetic order: e f a c b d
-        sortedLinkedCar.add(a);
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(c);
-        assertEquals(a, sortedLinkedCar.getFirst());
-        assertEquals(b, sortedLinkedCar.getLast());
-        sortedLinkedCar.add(d);
-        sortedLinkedCar.add(e);
-        assertEquals(e, sortedLinkedCar.getFirst());
-        assertEquals(d, sortedLinkedCar.getLast());
-        // deletes Elephant from linked list
-        assertEquals(d, sortedLinkedCar.retrieveLastElement());
-        assertEquals(b, sortedLinkedCar.getLast());
+    public void testAddCourse() {
+        sortedLinkedCourse.add(e);
+        sortedLinkedCourse.add(d);
+        assertEquals(d, sortedLinkedCourse.getFirst());
+        assertEquals(e, sortedLinkedCourse.getLast());
+        sortedLinkedCourse.add(b);
+        sortedLinkedCourse.add(f);
+        sortedLinkedCourse.add(a);
+        assertEquals(a, sortedLinkedCourse.getFirst());
+        assertEquals(f, sortedLinkedCourse.getLast());
+        assertEquals(f, sortedLinkedCourse.retrieveLastElement());
+        assertEquals(e, sortedLinkedCourse.getLast());
     }
 
     @Test
-    public void testRemoveFirstCar() {
-        // alphabetic order: e f a c b d
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(c);
-        assertEquals(c, sortedLinkedCar.getFirst());
-        assertEquals(b, sortedLinkedCar.getLast());
-        sortedLinkedCar.add(a);
-        assertEquals(a, sortedLinkedCar.getFirst());
-        // remove the first
-        sortedLinkedCar.remove(a, comparatorCar);
-        assertEquals(c, sortedLinkedCar.getFirst());
+    public void testRemoveFirstCourse() {
+        sortedLinkedCourse.add(c);
+        sortedLinkedCourse.add(b);
+        assertEquals(b, sortedLinkedCourse.getFirst());
+        assertEquals(c, sortedLinkedCourse.getLast());
+        sortedLinkedCourse.add(a);
+        assertEquals(a, sortedLinkedCourse.getFirst());
+        sortedLinkedCourse.remove(a, comparatorCourse);
+        assertEquals(b, sortedLinkedCourse.getFirst());
     }
 
     @Test
-    public void testRemoveEndCar() {
-        // alphabetic order: e f a c b d
-        sortedLinkedCar.add(b);
-        sortedLinkedCar.add(f);
-        assertEquals(f, sortedLinkedCar.getFirst());
-        assertEquals(b, sortedLinkedCar.getLast());
-        sortedLinkedCar.add(d);
-        assertEquals(d, sortedLinkedCar.getLast());
-        // remove from the end of the list
-        sortedLinkedCar.remove(d, comparatorCar);
-        assertEquals(b, sortedLinkedCar.getLast());
+    public void testRemoveEndCourse() {
+        sortedLinkedCourse.add(d);
+        sortedLinkedCourse.add(b);
+        assertEquals(b, sortedLinkedCourse.getFirst());
+        assertEquals(d, sortedLinkedCourse.getLast());
+        sortedLinkedCourse.add(f);
+        assertEquals(f, sortedLinkedCourse.getLast());
+        sortedLinkedCourse.remove(f, comparatorCourse);
+        assertEquals(d, sortedLinkedCourse.getLast());
     }
 
     @Test
-    public void testRemoveMiddleCar() {
-        // alphabetic order: e f a c b d
-        sortedLinkedCar.add(a);
-        sortedLinkedCar.add(b);
-        assertEquals(a, sortedLinkedCar.getFirst());
-        assertEquals(b, sortedLinkedCar.getLast());
-        sortedLinkedCar.add(f);
-        assertEquals(f, sortedLinkedCar.getFirst());
-        assertEquals(b, sortedLinkedCar.getLast());
-        assertEquals(3, sortedLinkedCar.getSize());
-        // remove from middle of list
-        sortedLinkedCar.remove(a, comparatorCar);
-        assertEquals(f, sortedLinkedCar.getFirst());
-        assertEquals(b, sortedLinkedCar.getLast());
-        assertEquals(2, sortedLinkedCar.getSize());
-    } */
+    public void testRemoveMiddleCourse() {
+        sortedLinkedCourse.add(b);
+        sortedLinkedCourse.add(a);
+        assertEquals(a, sortedLinkedCourse.getFirst());
+        assertEquals(b, sortedLinkedCourse.getLast());
+        sortedLinkedCourse.add(f);
+        assertEquals(f, sortedLinkedCourse.getLast());
+        assertEquals(a, sortedLinkedCourse.getFirst());
+        assertEquals(3, sortedLinkedCourse.getSize());
+        sortedLinkedCourse.remove(a, comparatorCourse);
+        assertEquals(b, sortedLinkedCourse.getFirst());
+        assertEquals(f, sortedLinkedCourse.getLast());
+        assertEquals(2, sortedLinkedCourse.getSize());
+    }
 
     private class StringComparator implements Comparator<String> {
 
         @Override
         public int compare(String arg0, String arg1) {
-            // TODO Auto-generated method stub
             return arg0.compareTo(arg1);
         }
 
@@ -300,46 +258,44 @@ public class SortedDoubleLinkedList_STUDENT_Test {
 
         @Override
         public int compare(Double arg0, Double arg1) {
-            // TODO Auto-generated method stub
             return arg0.compareTo(arg1);
         }
 
     }
 
-    private class CarComparator implements Comparator<Car> {
+    private class CourseComparator implements Comparator<Course> {
 
         @Override
-        public int compare(Car arg0, Car arg1) {
-            // Just put cars in alphabetic order by make
-            return arg0.getMake().compareTo(arg1.getMake());
+        public int compare(Course arg0, Course arg1) {
+            return arg0.toString().compareTo(arg1.toString());
         }
     }
 
-    private class Car {
-        String make;
-        String model;
-        int year;
+    private class Course {
+        String teacher;
+        String course;
+        int id;
 
-        public Car(String make, String model, int year) {
-            this.make = make;
-            this.model = model;
-            this.year = year;
+        public Course(String teacher, String course, int id) {
+            this.teacher = teacher;
+            this.course = course;
+            this.id = id;
         }
 
         public String getMake() {
-            return make;
+            return teacher;
         }
 
-        public String getModel() {
-            return model;
+        public String getCourse() {
+            return course;
         }
 
-        public int getYear() {
-            return year;
+        public int getId() {
+            return id;
         }
 
         public String toString() {
-            return (getMake() + " " + getModel() + " " + getYear());
+            return (getMake() + " " + getCourse() + " " + getId());
         }
     }
 }
