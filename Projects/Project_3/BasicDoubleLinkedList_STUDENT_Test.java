@@ -9,6 +9,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student tests for the BasicDoubleLinkedList class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class BasicDoubleLinkedList_STUDENT_Test {
     BasicDoubleLinkedList<String> linkedString;
     BasicDoubleLinkedList<Double> linkedDouble;

@@ -8,6 +8,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student tests for the SortedDoubleLinkedList class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class SortedDoubleLinkedList_STUDENT_Test {
     SortedDoubleLinkedList<String> sortedLinkedString;
     SortedDoubleLinkedList<Double> sortedLinkedDouble;
