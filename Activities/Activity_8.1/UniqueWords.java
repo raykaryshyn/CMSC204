@@ -15,22 +15,25 @@ public class UniqueWords {
     public static void main(String[] args) {
         String fileName = "quotes_BobRoss.txt";
 
+        // Use TreeSet to store words in alphabetical order
         Set<String> treeSet = new TreeSet<>();
 
         // Add all words in the file to treeSet
         try {
             Scanner fileData = new Scanner(new File(fileName));
 
-            while (fileData.hasNextLine()) {
-                String line = fileData.nextLine();
+            while (fileData.hasNext()) {
+                // Get next word
+                String word = fileData.next();
 
-                // Remove all punctuation except for apostrophes (\u0027)
-                String[] words = line.replaceAll("[\\p{P}&&[^\u0027]]", "").toLowerCase().split("\\s+");
-                for (String word : words) {
-                    if (word.length() != 0)
-                        // Add word to treeSet (only if word doesn't already exist in the treeSet)
-                        treeSet.add(word.substring(0, 1).toUpperCase() + word.substring(1));
-                }
+                // Strip all punctuation except for apostrophes (\u0027)
+                word = word.replaceAll("[\\p{P}&&[^\u0027]]", "").toLowerCase();
+
+                // Capitalize first letter
+                word = word.substring(0, 1).toUpperCase() + word.substring(1);
+
+                // Add word to treeSet (only if word doesn't already exist in the treeSet)
+                treeSet.add(word);
             }
 
             fileData.close();
