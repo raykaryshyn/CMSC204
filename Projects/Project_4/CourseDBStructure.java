@@ -15,14 +15,28 @@ public class CourseDBStructure implements CourseDBStructureInterface {
 
     @Override
     public void add(CourseDBElement element) {
-        // TODO Auto-generated method stub
+        int index = element.hashCode() % hashTable.length;
 
+        if (hashTable[index] == null) {
+            LinkedList<CourseDBElement> input = new LinkedList<CourseDBElement>();
+            input.add(element);
+            hashTable[index] = input;
+        } else
+            hashTable[index].add(element);
     }
 
     @Override
     public CourseDBElement get(int crn) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        int index = String.valueOf(crn).hashCode() % hashTable.length;
+
+        if (hashTable[index].size() > 0) {
+            for (CourseDBElement temp : hashTable[index]) {
+                if (temp.getCRN() == crn)
+                    return temp;
+            }
+        }
+
+        throw new IOException();
     }
 
     @Override
