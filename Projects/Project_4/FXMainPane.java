@@ -5,13 +5,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.Executors;
+//import java.util.concurrent.ScheduledExecutorService;
+//import java.util.concurrent.TimeUnit;
 
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
-import javafx.application.Platform;
+//import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -23,12 +23,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Tooltip;
+//import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+//import javafx.scene.layout.BorderPane;
+//import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+//import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
@@ -277,7 +277,7 @@ public class FXMainPane extends VBox {
 						}
 		
 					try {
-						String list = "";
+						//String list = "";
 						dataMgr.readFile(inputFile);
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();
@@ -339,7 +339,7 @@ public class FXMainPane extends VBox {
 		
 
 	}
-	private void setupFields() {
+	/* private void setupFields() {
 		textfield1.setDisable(false);
 		textfield2.setDisable(false);
 		textfield3.setDisable(false);
@@ -355,7 +355,7 @@ public class FXMainPane extends VBox {
 		textfield4.setDisable(true);
 		textfield5.setDisable(true);
 		
-	}
+	} */
 	
 	
 }

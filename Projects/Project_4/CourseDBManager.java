@@ -9,7 +9,7 @@ public class CourseDBManager implements CourseDBManagerInterface {
     private CourseDBStructure structure;
 
     public CourseDBManager() {
-        structure = new CourseDBStructure(20);
+        structure = new CourseDBStructure(5);
     }
 
     @Override
