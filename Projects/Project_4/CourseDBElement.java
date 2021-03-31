@@ -64,4 +64,9 @@ public class CourseDBElement implements Comparable<CourseDBElement> {
     public int compareTo(CourseDBElement element) {
         return this.crn - element.crn;
     }
+
+    public String toString() {
+        return ("\nCourse:" + courseId + " CRN:" + crn + " Credits:" + numberOfCredits + " Instructor:" + instructorName
+                + " Room:" + roomNumber);
+    }
 }
