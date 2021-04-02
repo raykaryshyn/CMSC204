@@ -10,6 +10,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
+ * Implements a method, generateRandomIntegers(), to randomly generate 50000
+ * integer numbers between 1000 and 9999.
+ * 
+ * Saves the generated numbers as a binary data file, binary.dat.
+ * 
+ * Saves the same generated numbers to an ASCII text file, ascii.txt.
+ * 
+ * Implements another method, checkBinaryFile(), to read binary.dat, which
+ * ensures that the content can be read correctly.
+ * 
  * @author Raymond Karyshyn
  */
 public class RandomIntegerGenerator {
