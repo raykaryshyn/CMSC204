@@ -1,0 +1,4 @@
+MATH200 1234 4 Distance-Learning Tom Smith
+MATH201 2345 3 SW217 Bob Smith
+MATH202 3456 4 Distance-Learning Tod Smith
+MATH203 4567 3 SC451 Rob Smith
