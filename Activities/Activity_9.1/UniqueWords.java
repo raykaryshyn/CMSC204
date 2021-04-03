@@ -61,18 +61,17 @@ public class UniqueWords {
     }
 
     public static <A, B> Map<A, B> mapSorter(Map<A, B> map) {
-        Map<A, B> temp_map = new HashMap<>();
+        Map<A, B> sortedMap = new HashMap<>();
+        List<Map.Entry<A, B>> list = new ArrayList<>();
 
-        List<Map.Entry<A, B>> b = new ArrayList<>();
+        // Map to List
+        for (Map.Entry<A, B> entry : map.entrySet())
+            list.add(entry);
 
-        for (Map.Entry<A, B> a : map.entrySet()) {
-            b.add(a);
-        }
+        // List to Map
+        for (Map.Entry<A, B> entry : list)
+            sortedMap.put(entry.getKey(), entry.getValue());
 
-        for (Map.Entry<A, B> a : b) {
-            temp_map.put(a.getKey(), a.getValue());
-        }
-
-        return temp_map;
+        return sortedMap;
     }
 }
