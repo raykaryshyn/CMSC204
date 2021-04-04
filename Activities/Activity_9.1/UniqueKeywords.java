@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
  * 
  * @author Raymond Karyshyn
  */
-public class UniqueWords {
+public class UniqueKeywords {
     public static void main(String[] args) {
         String fileName = "BasicDoubleLinkedList.java";
         final String[] keywords = { "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class",
@@ -71,7 +71,6 @@ public class UniqueWords {
 
         // Alphabelically sort the list by its keys
         list = sortList(list, 0, list.size() - 1);
-        System.out.println(list);
 
         // List to Map
         for (Map.Entry<A, B> entry : list)
@@ -81,68 +80,56 @@ public class UniqueWords {
     }
 
     private static <A extends Comparable<? super A>, B extends Comparable<? super B>> List<Map.Entry<A, B>> sortList(
-            List<Map.Entry<A, B>> list, int l, int r) {
-        if (l < r) {
-            // Find the middle point
-            int m = l + (r - l) / 2;
+            List<Map.Entry<A, B>> list, int first, int last) {
+        if (first < last) {
+            int mid = first + (last - first) / 2;
 
-            // Sort first and second halves
-            sortList(list, l, m);
-            sortList(list, m + 1, r);
+            sortList(list, first, mid);
+            sortList(list, mid + 1, last);
 
-            // Merge the sorted halves
-            merge(list, l, m, r);
+            merge(list, first, mid, last);
         }
 
         return list;
     }
 
     private static <A extends Comparable<? super A>, B extends Comparable<? super B>> void merge(
-            List<Map.Entry<A, B>> list, int l, int m, int r) {
-        // Find sizes of two subarrays to be merged
-        int n1 = m - l + 1;
-        int n2 = r - m;
+            List<Map.Entry<A, B>> list, int first, int mid, int last) {
+        int firstSize = mid - first + 1;
+        int lastSize = last - mid;
 
-        /* Create temp arrays */
-        List<Map.Entry<A, B>> L = new ArrayList<>();
-        List<Map.Entry<A, B>> R = new ArrayList<>();
+        List<Map.Entry<A, B>> firstList = new ArrayList<>();
+        List<Map.Entry<A, B>> lastList = new ArrayList<>();
 
-        /* Copy data to temp arrays */
-        for (int i = 0; i < n1; ++i)
-            L.add(i, list.get(l + i));
-        for (int j = 0; j < n2; ++j)
-            R.add(j, list.get(m + 1 + j));
+        for (int i = 0; i < firstSize; i++)
+            firstList.add(i, list.get(first + i));
+        for (int j = 0; j < lastSize; j++)
+            lastList.add(j, list.get(mid + 1 + j));
 
-        /* Merge the temp arrays */
+        int firstIndex = 0, lastIndex = 0;
 
-        // Initial indexes of first and second subarrays
-        int i = 0, j = 0;
-
-        // Initial index of merged subarry array
-        int k = l;
-        while (i < n1 && j < n2) {
-            if (L.get(i).getKey().compareTo(R.get(j).getKey()) <= 0) {
-                list.set(k, L.get(i));
-                i++;
+        int mergedIndex = first;
+        while (firstIndex < firstSize && lastIndex < lastSize) {
+            if (firstList.get(firstIndex).getKey().compareTo(lastList.get(lastIndex).getKey()) <= 0) {
+                list.set(mergedIndex, firstList.get(firstIndex));
+                firstIndex++;
             } else {
-                list.set(k, R.get(j));
-                j++;
+                list.set(mergedIndex, lastList.get(lastIndex));
+                lastIndex++;
             }
-            k++;
+            mergedIndex++;
         }
 
-        /* Copy remaining elements of L[] if any */
-        while (i < n1) {
-            list.set(k, L.get(i));
-            i++;
-            k++;
+        while (firstIndex < firstSize) {
+            list.set(mergedIndex, firstList.get(firstIndex));
+            firstIndex++;
+            mergedIndex++;
         }
 
-        /* Copy remaining elements of R[] if any */
-        while (j < n2) {
-            list.set(k, R.get(j));
-            j++;
-            k++;
+        while (lastIndex < lastSize) {
+            list.set(mergedIndex, lastList.get(lastIndex));
+            lastIndex++;
+            mergedIndex++;
         }
     }
 }
