@@ -12,4 +12,4 @@ Upon course completion, a student will be able to:
 
 - - - -
 
-_Course information taken from the [Montgomery College 2020-2021 Catalog](https://catalog.montgomerycollege.edu/preview_course_nopop.php?catoid=13&coid=18071)_
+_Course information taken from the [Montgomery College 2020-2021 Catalog](https://catalog.montgomerycollege.edu/preview_course_nopop.php?catoid=13&coid=18071)._
