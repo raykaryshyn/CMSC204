@@ -34,7 +34,7 @@ public class CourseDBStructure implements CourseDBStructureInterface {
     public CourseDBElement get(int crn) throws IOException {
         int index = String.valueOf(crn).hashCode() % hashTable.length;
 
-        if (hashTable[index].size() > 0) {
+        if (hashTable[index] != null) {
             for (CourseDBElement temp : hashTable[index]) {
                 if (temp.getCRN() == crn)
                     return temp;
