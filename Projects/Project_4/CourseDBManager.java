@@ -6,9 +6,9 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
- * A class representing objects that contain manages a CourseDBStructure with
- * the ability to read data from a file containing information for multiple
- * CourseDBElement's.
+ * A class representing objects that manage a CourseDBStructure with the added
+ * ability to read data from a file containing information for multiple
+ * CourseDBElement objects.
  * 
  * @author Raymond Karyshyn
  */
