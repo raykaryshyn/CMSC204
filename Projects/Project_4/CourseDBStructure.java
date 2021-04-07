@@ -24,10 +24,10 @@ public class CourseDBStructure implements CourseDBStructureInterface {
 
         if (hashTable[index] == null) {
             LinkedList<CourseDBElement> input = new LinkedList<CourseDBElement>();
-            input.add(element);
             hashTable[index] = input;
-        } else
-            hashTable[index].add(element);
+        }
+
+        hashTable[index].add(element);
     }
 
     @Override
