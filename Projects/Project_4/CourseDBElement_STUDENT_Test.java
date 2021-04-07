@@ -4,6 +4,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student JUnit tests for the CourseDBElement class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CourseDBElement_STUDENT_Test {
     CourseDBElement element1, element2, element3;
 

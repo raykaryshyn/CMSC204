@@ -7,6 +7,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student JUnit tests for the CourseDBStructure class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CourseDBStructure_STUDENT_Test {
     CourseDBStructure structure;
     CourseDBElement element1, element2, element3;

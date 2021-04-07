@@ -1,6 +1,11 @@
 import java.util.LinkedList;
 import java.io.IOException;
 
+/**
+ * A class representing objects that contain multiple CourseDBElements.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CourseDBStructure implements CourseDBStructureInterface {
     protected LinkedList<CourseDBElement>[] hashTable;
 

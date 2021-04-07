@@ -1,3 +1,8 @@
+/**
+ * A class representing objects containing information about a course.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CourseDBElement implements Comparable<CourseDBElement> {
     private String courseId;
     private int crn;

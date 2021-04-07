@@ -8,6 +8,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student JUnit tests for the CourseDBManager class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CourseDBManager_STUDENT_Test {
     CourseDBManagerInterface manager = new CourseDBManager();
 

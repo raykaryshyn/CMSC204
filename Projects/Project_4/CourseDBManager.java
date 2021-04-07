@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * A class representing objects that contain manages a CourseDBStructure with
+ * the ability to read data from a file containing information for multiple
+ * CourseDBElement's.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CourseDBManager implements CourseDBManagerInterface {
     private CourseDBStructure structure;
 
