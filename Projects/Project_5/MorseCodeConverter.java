@@ -1,17 +1,17 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class MorseCodeConverter {
-    public MorseCodeConverter() {
-
-    }
+    private static MorseCodeTree tree = new MorseCodeTree();
 
     /**
      * returns a string with all the data in the tree in LNR order with an space in
      * between them. Uses the toArrayList method in MorseCodeTree It should return
      * the data in this order:
      * 
-     * "h s v i f u e l r a p w j b d x n c k y t z g q m o"
+     * { "h", "s", "v", "i", "f", "u", "e", "l", "r", "a", "p", "w", "j", "", "b",
+     * "d", "x", "n", "c", "k", "y", "t", "z", "g", "q", "m", "o" }
      * 
      * Note the extra space between j and b - that is because there is an empty
      * string that is the root, and in the LNR traversal, the root would come
@@ -22,7 +22,12 @@ public class MorseCodeConverter {
      * @return the data in the tree in LNR order separated by a space.
      */
     public static String printTree() {
-        return "";
+        String output = "";
+
+        for (String s : tree.toArrayList())
+            output += s + " ";
+
+        return output.trim();
     }
 
     /**
@@ -39,7 +44,21 @@ public class MorseCodeConverter {
      * @return the English translation
      */
     public static String convertToEnglish(String code) {
-        return "";
+        String output = "";
+        String[] words = code.split("/");
+
+        for (String word : words) {
+            word = word.trim();
+
+            String[] letters = word.split(" ");
+
+            for (String letter : letters)
+                output += tree.fetch(letter);
+
+            output += " ";
+        }
+
+        return output.trim();
     }
 
     /**
@@ -57,6 +76,14 @@ public class MorseCodeConverter {
      * @throws FileNotFoundException if file cannot to be opened
      */
     public static String convertToEnglish(File codeFile) throws FileNotFoundException {
-        return "";
+        String output = "";
+        Scanner scanner = new Scanner(codeFile);
+
+        while (scanner.hasNextLine())
+            output += convertToEnglish(scanner.nextLine());
+
+        scanner.close();
+
+        return output;
     }
 }

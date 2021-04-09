@@ -15,7 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+//import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
@@ -31,7 +31,7 @@ public class MorseCodeMain extends BorderPane
 {
 	private Label lblCode, lblEnglish;
 	private TextArea txtCode, txtEnglish;
-	private ScrollPane codeScroll, englishScroll;
+	//private ScrollPane codeScroll, englishScroll;
 	private	Button convertFile, convertString, exitButton;
 	
 	private Alert alert = new Alert(AlertType.INFORMATION);
@@ -49,12 +49,12 @@ public class MorseCodeMain extends BorderPane
 		
 		// TextAreas
 	    txtCode =  new TextArea();
-	    codeScroll = new ScrollPane(txtCode);
+	    //codeScroll = new ScrollPane(txtCode);
 	    txtCode.setWrapText(true);
 	    txtCode.setFont(new Font("Arial", 20));
 	    txtEnglish = new TextArea();
 	    txtEnglish.setEditable(false);
-	    englishScroll = new ScrollPane(txtEnglish);
+	    //englishScroll = new ScrollPane(txtEnglish);
 	    txtEnglish.setWrapText(true);
 	    txtEnglish.setFont(new Font("Arial", 20));
 	    txtEnglish.setEditable(false);

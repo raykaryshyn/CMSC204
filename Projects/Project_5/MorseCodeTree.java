@@ -86,7 +86,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
                 root.left = new TreeNode<>(letter);
             else
                 root.right = new TreeNode<>(letter);
-        } else {
+        } else if (code.length() > 1) {
             if (code.charAt(0) == '.')
                 root = root.left;
             else
@@ -122,42 +122,23 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public String fetchNode(TreeNode<String> root, String code) {
+        String output = "";
+
         if (code.length() == 1) {
             if (code.equals("."))
-                return root.left.getData();
+                output = root.left.getData();
             else
-                return root.right.getData();
-        } else {
+                output = root.right.getData();
+        } else if (code.length() > 1) {
             if (code.charAt(0) == '.')
                 root = root.left;
             else
                 root = root.right;
 
-            return fetchNode(root, code.substring(1));
+            output = fetchNode(root, code.substring(1));
         }
-    }
 
-    /**
-     * This operation is not supported in the MorseCodeTree
-     * 
-     * @param data data of node to be deleted
-     * @return reference to the current tree
-     * @throws UnsupportedOperationException
-     */
-    @Override
-    public LinkedConverterTreeInterface<String> delete(String data) throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("This method is not yet supported.");
-    }
-
-    /**
-     * This operation is not supported in the MorseCodeTree
-     * 
-     * @return reference to the current tree
-     * @throws UnsupportedOperationException
-     */
-    @Override
-    public LinkedConverterTreeInterface<String> update() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("This method is not yet supported.");
+        return output;
     }
 
     /**
@@ -216,7 +197,9 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
     @Override
     public ArrayList<String> toArrayList() {
         ArrayList<String> list = new ArrayList<String>(26);
+
         LNRoutputTraversal(root, list);
+
         return list;
     }
 
@@ -232,8 +215,33 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
     public void LNRoutputTraversal(TreeNode<String> root, ArrayList<String> list) {
         if (root != null) {
             LNRoutputTraversal(root.left, list);
+
             list.add(root.getData());
+
             LNRoutputTraversal(root.right, list);
         }
+    }
+
+    /**
+     * This operation is not supported in the MorseCodeTree
+     * 
+     * @param data data of node to be deleted
+     * @return reference to the current tree
+     * @throws UnsupportedOperationException
+     */
+    @Override
+    public LinkedConverterTreeInterface<String> delete(String data) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("This method is not yet supported.");
+    }
+
+    /**
+     * This operation is not supported in the MorseCodeTree
+     * 
+     * @return reference to the current tree
+     * @throws UnsupportedOperationException
+     */
+    @Override
+    public LinkedConverterTreeInterface<String> update() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("This method is not yet supported.");
     }
 }
