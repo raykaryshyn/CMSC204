@@ -106,8 +106,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public String fetch(String code) {
-        // TODO Auto-generated method stub
-        return null;
+        return fetchNode(root, code);
     }
 
     /**
@@ -123,8 +122,19 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public String fetchNode(TreeNode<String> root, String code) {
-        // TODO Auto-generated method stub
-        return null;
+        if (code.length() == 1) {
+            if (code.equals("."))
+                return root.left.getData();
+            else
+                return root.right.getData();
+        } else {
+            if (code.charAt(0) == '.')
+                root = root.left;
+            else
+                root = root.right;
+
+            return fetchNode(root, code.substring(1));
+        }
     }
 
     /**
@@ -136,8 +146,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public LinkedConverterTreeInterface<String> delete(String data) throws UnsupportedOperationException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("This method is not yet supported.");
     }
 
     /**
@@ -148,8 +157,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public LinkedConverterTreeInterface<String> update() throws UnsupportedOperationException {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("This method is not yet supported.");
     }
 
     /**
@@ -207,8 +215,9 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public ArrayList<String> toArrayList() {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> list = new ArrayList<String>(26);
+        LNRoutputTraversal(root, list);
+        return list;
     }
 
     /**
@@ -221,7 +230,10 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public void LNRoutputTraversal(TreeNode<String> root, ArrayList<String> list) {
-        // TODO Auto-generated method stub
-
+        if (root != null) {
+            LNRoutputTraversal(root.left, list);
+            list.add(root.getData());
+            LNRoutputTraversal(root.right, list);
+        }
     }
 }

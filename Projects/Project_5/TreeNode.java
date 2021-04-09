@@ -6,7 +6,7 @@
 public class TreeNode<T> {
     protected TreeNode<T> left;
     protected TreeNode<T> right;
-    protected T data;
+    private T data;
 
     /**
      * Create a new TreeNode with left and right child set to null and data set to
