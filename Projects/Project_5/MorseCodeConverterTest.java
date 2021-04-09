@@ -41,7 +41,7 @@ public class MorseCodeConverterTest {
 		String converter1 = MorseCodeConverter.convertToEnglish("--. --- --- -.. -... -.-- . / .-- --- .-. .-.. -.. ");
 		assertEquals("goodbye world",converter1);
 		
-		String test2="daisy daisy";		
+		//String test2="daisy daisy";		
 		String converter2 = MorseCodeConverter.convertToEnglish("-.. .- .. ... -.-- / -.. .- .. ... -.-- ");
 		assertEquals("daisy daisy", converter2);
 	}
@@ -75,7 +75,6 @@ public class MorseCodeConverterTest {
 				// readFile();
 			}
 			catch (Exception e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				JOptionPane.showMessageDialog(null, "There is a problem with this file", "Error", JOptionPane.ERROR_MESSAGE);
 			}

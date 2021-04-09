@@ -10,11 +10,13 @@ import java.util.ArrayList;
  * TreeNode) The constructor will call the buildTree method
  */
 public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
+    protected TreeNode<String> root;
+
     /**
      * Constructor - calls the buildTree method
      */
     public MorseCodeTree() {
-
+        buildTree();
     }
 
     /**
@@ -24,8 +26,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public TreeNode<String> getRoot() {
-        // TODO Auto-generated method stub
-        return null;
+        return root;
     }
 
     /**
@@ -35,8 +36,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public void setRoot(TreeNode<String> newNode) {
-        // TODO Auto-generated method stub
-
+        root = newNode;
     }
 
     /**
@@ -48,8 +48,12 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public LinkedConverterTreeInterface<String> insert(String code, String letter) {
-        // TODO Auto-generated method stub
-        return null;
+        if (getRoot() == null)
+            setRoot(new TreeNode<>(letter));
+        else
+            addNode(getRoot(), code, letter);
+
+        return this;
     }
 
     /**
@@ -77,8 +81,19 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public void addNode(TreeNode<String> root, String code, String letter) {
-        // TODO Auto-generated method stub
+        if (code.length() == 1) {
+            if (code.equals("."))
+                root.left = new TreeNode<>(letter);
+            else
+                root.right = new TreeNode<>(letter);
+        } else {
+            if (code.charAt(0) == '.')
+                root = root.left;
+            else
+                root = root.right;
 
+            addNode(root, code.substring(1), letter);
+        }
     }
 
     /**
@@ -146,8 +161,42 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
      */
     @Override
     public void buildTree() {
-        // TODO Auto-generated method stub
+        // Root
+        insert(null, "");
 
+        // Level 1
+        insert(".", "e");
+        insert("-", "t");
+
+        // Level 2
+        insert("..", "i");
+        insert(".-", "a");
+        insert("-.", "n");
+        insert("--", "m");
+
+        // Level 3
+        insert("...", "s");
+        insert("..-", "u");
+        insert(".-.", "r");
+        insert(".--", "w");
+        insert("-..", "d");
+        insert("-.-", "k");
+        insert("--.", "g");
+        insert("---", "o");
+
+        // Level 4
+        insert("....", "h");
+        insert("...-", "v");
+        insert("..-.", "f");
+        insert(".-..", "l");
+        insert(".--.", "p");
+        insert(".---", "j");
+        insert("-...", "b");
+        insert("-..-", "x");
+        insert("-.-.", "c");
+        insert("-.--", "y");
+        insert("--..", "z");
+        insert("--.-", "q");
     }
 
     /**
