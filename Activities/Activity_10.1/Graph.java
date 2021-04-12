@@ -1,5 +1,11 @@
 import java.util.*;
 
+/**
+ * Class to represent a graph. 
+ * 
+ * @see https://www.softwaretestinghelp.com/java-graph-tutorial/
+ * @author Raymond Karyshyn
+ */
 public class Graph {
     List<List<Node>> adj_list = new ArrayList<>();
 

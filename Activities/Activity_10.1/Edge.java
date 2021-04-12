@@ -1,3 +1,9 @@
+/**
+ * Class to represent an edge of a graph. 
+ * 
+ * @see https://www.softwaretestinghelp.com/java-graph-tutorial/
+ * @author Raymond Karyshyn
+ */
 public class Edge {
     private int src, dest, weight;
 

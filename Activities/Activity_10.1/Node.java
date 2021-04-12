@@ -1,3 +1,9 @@
+/**
+ * Class to represent a node of a graph. 
+ * 
+ * @see https://www.softwaretestinghelp.com/java-graph-tutorial/
+ * @author Raymond Karyshyn
+ */
 public class Node {
     private int value, weight;
 
