@@ -7,6 +7,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student tests for the MorseCodeTree class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class MorseCodeTree_STUDENT_Test {
 	MorseCodeTree tree;
 

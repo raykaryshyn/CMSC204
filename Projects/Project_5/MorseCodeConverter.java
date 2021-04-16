@@ -2,6 +2,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * The MorseCodeConverter class uses the MorseCodeTree to convert morse code
+ * into English.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class MorseCodeConverter {
     private static MorseCodeTree tree = new MorseCodeTree();
 

@@ -2,6 +2,7 @@
  * The external Tree Node for Linked Trees
  * 
  * @param T data type of TreeNode
+ * @author Raymond Karyshyn
  */
 public class TreeNode<T> {
     protected TreeNode<T> left;

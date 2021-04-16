@@ -4,6 +4,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Student tests for the MorseCodeConverter class.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class MorseCodeConverter_STUDENT_Test {
 	@Before
 	public void setUp() throws Exception {

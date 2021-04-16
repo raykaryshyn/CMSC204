@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * reference to the left and right child. The TreeNode is parameterized as a
  * String, TreeNode This class uses a private member root (reference to a
  * TreeNode) The constructor will call the buildTree method
+ * 
+ * @author Raymond Karyshyn
  */
 public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
     protected TreeNode<String> root;
