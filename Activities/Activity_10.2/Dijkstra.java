@@ -4,6 +4,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
 
+/**
+ * Utility class for calculating the shortest path from a source node with
+ * Dijkstra's algorithm.
+ * 
+ * @author Raymond Karyshyn
+ * @see https://www.baeldung.com/java-dijkstra
+ */
 public class Dijkstra {
     public static Graph calculateShortestPathFromSource(Graph graph, Node source) {
         source.setDistance(0);
@@ -39,7 +46,7 @@ public class Dijkstra {
 
         for (Node node : unsettledNodes) {
             int nodeDistance = node.getDistance();
-            
+
             if (nodeDistance < lowestDistance) {
                 lowestDistance = nodeDistance;
                 lowestDistanceNode = node;

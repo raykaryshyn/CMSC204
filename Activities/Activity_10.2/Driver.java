@@ -1,6 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Simulation of Dijkstra's algorithm.
+ * 
+ * @author Raymond Karyshyn
+ * @see https://www.baeldung.com/java-dijkstra
+ */
 public class Driver {
     public static void main(String[] args) {
         Node nodeA = new Node("A");
@@ -43,19 +49,24 @@ public class Driver {
         for (Node node : graph.getNodes()) {
             switch (node.getName()) {
             case "B":
-                System.out.println(node.getShortestPath().equals(shortestPathForNodeB));
+                System.out.println("It is " + node.getShortestPath().equals(shortestPathForNodeB)
+                        + " that the shortest path for Node B is: A -> B.");
                 break;
             case "C":
-                System.out.println(node.getShortestPath().equals(shortestPathForNodeC));
+                System.out.println("It is " + node.getShortestPath().equals(shortestPathForNodeC)
+                        + " that the shortest path for Node C is: A -> C.");
                 break;
             case "D":
-                System.out.println(node.getShortestPath().equals(shortestPathForNodeD));
+                System.out.println("It is " + node.getShortestPath().equals(shortestPathForNodeD)
+                        + " that the shortest path for Node D is: A -> B -> D.");
                 break;
             case "E":
-                System.out.println(node.getShortestPath().equals(shortestPathForNodeE));
+                System.out.println("It is " + node.getShortestPath().equals(shortestPathForNodeE)
+                        + " that the shortest path for Node E is: A -> B -> D -> E.");
                 break;
             case "F":
-                System.out.println(node.getShortestPath().equals(shortestPathForNodeF));
+                System.out.println("It is " + node.getShortestPath().equals(shortestPathForNodeF)
+                        + " that the shortest path for Node F is: A -> B -> D -> F.");
                 break;
             }
         }

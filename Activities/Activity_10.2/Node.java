@@ -3,6 +3,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represents a node of a graph.
+ * 
+ * @author Raymond Karyshyn
+ * @see https://www.baeldung.com/java-dijkstra
+ */
 public class Node {
     private String name;
     private List<Node> shortestPath = new LinkedList<>();
