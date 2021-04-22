@@ -127,14 +127,14 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
         String output = "";
 
         if (code.length() == 1) {
-            if (code.equals("."))
+            if (code.equals(".") && root.left != null)
                 output = root.left.getData();
-            else
+            else if (code.equals("-") && root.right != null)
                 output = root.right.getData();
         } else if (code.length() > 1) {
-            if (code.charAt(0) == '.')
+            if (code.charAt(0) == '.' && root.left != null)
                 root = root.left;
-            else
+            else if (code.charAt(0) == '-' && root.right != null)
                 root = root.right;
 
             output = fetchNode(root, code.substring(1));
