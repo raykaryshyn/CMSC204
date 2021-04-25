@@ -1,5 +1,5 @@
 **/.vscode
 
 # Eclipse-style projects
-*.project
+.project
 *.class
