@@ -115,4 +115,13 @@ public class Road implements Comparable<Road> {
     public String toString() {
         return name + "," + weight + "," + source + ";" + destination;
     }
+
+    /**
+     * Hash code method.
+     * 
+     * @return the hashcode for the name of the road
+     */
+    public int hashCode() {
+        return String.valueOf(toString()).hashCode();
+    }
 }

@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -166,6 +167,24 @@ public class TownGraphManager implements TownGraphManagerInterface {
     }
 
     public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
-        // TODO Auto-generated method stub
+        if (selectedFile != null) {
+            String[] line, roadText;
+            String town1, town2;
+
+            Scanner scanner = new Scanner(selectedFile);
+
+            while (scanner.hasNext()) {
+                line = scanner.nextLine().split(";");
+                roadText = line[0].split(",");
+                town1 = line[1];
+                town2 = line[2];
+
+                graph.addVertex(new Town(town1));
+                graph.addVertex(new Town(town2));
+                graph.addEdge(new Town(town1), new Town(town2), Integer.parseInt(roadText[1]), roadText[0]);
+            }
+
+            scanner.close();
+        }
     }
 }
