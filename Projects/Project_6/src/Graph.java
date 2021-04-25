@@ -233,15 +233,18 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return An arraylist of Strings that describe the path from sourceVertex to
      *         destinationVertex They will be in the format: startVertex "via" Edge
      *         "to" endVertex weight As an example: if finding path from Vertex_1 to
-     *         Vertex_10, the ArrayList<String> would be in the following
-     *         format(this is a hypothetical solution): Vertex_1 via Edge_2 to
-     *         Vertex_3 4 (first string in ArrayList) Vertex_3 via Edge_5 to
-     *         Vertex_8 2 (second string in ArrayList) Vertex_8 via Edge_9 to
-     *         Vertex_10 2 (third string in ArrayList)
+     *         Vertex_10, the ArrayList<String> would be in the following format
+     *         (this is a hypothetical solution): Vertex_1 via Edge_2 to Vertex_3 4
+     *         (first string in ArrayList) Vertex_3 via Edge_5 to Vertex_8 2 (second
+     *         string in ArrayList) Vertex_8 via Edge_9 to Vertex_10 2 (third string
+     *         in ArrayList)
      */
     public ArrayList<String> shortestPath(Town sourceVertex, Town destinationVertex) {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> arrayList = new ArrayList<String>();
+
+        dijkstraShortestPath(sourceVertex);
+
+        return arrayList;
     }
 
     /**
