@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
 
 /**
  * Holds an object of Graph.
@@ -9,6 +11,12 @@ import java.util.ArrayList;
  * @author Raymond Karyshyn
  */
 public class TownGraphManager implements TownGraphManagerInterface {
+    private Graph graph;
+
+    TownGraphManager() {
+        graph = new Graph();
+    }
+
     /**
      * Adds a road with 2 towns and a road name
      * 
@@ -18,7 +26,9 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return true if the road was added successfully
      */
     public boolean addRoad(String town1, String town2, int weight, String roadName) {
-        // TODO Auto-generated method stub
+        if (graph.addEdge(new Town(town1), new Town(town2), weight, roadName) != null)
+            return true;
+
         return false;
     }
 
@@ -31,8 +41,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
      *         if not
      */
     public String getRoad(String town1, String town2) {
-        // TODO Auto-generated method stub
-        return null;
+        return graph.getEdge(new Town(town1), new Town(town2)).getName();
     }
 
     /**
@@ -42,8 +51,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return true if the town was successfully added, false if not
      */
     public boolean addTown(String v) {
-        // TODO Auto-generated method stub
-        return false;
+        return graph.addVertex(new Town(v));
     }
 
     /**
@@ -53,7 +61,13 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return the Town specified by the name, or null if town does not exist
      */
     public Town getTown(String name) {
-        // TODO Auto-generated method stub
+        if (graph.vertexSet().contains(new Town(name))) {
+            for (Town town : graph.vertexSet()) {
+                if (town.equals(new Town(name)))
+                    return town;
+            }
+        }
+
         return null;
     }
 
@@ -64,8 +78,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return true if the town is in the graph, false if not
      */
     public boolean containsTown(String v) {
-        // TODO Auto-generated method stub
-        return false;
+        return graph.containsVertex(new Town(v));
     }
 
     /**
@@ -76,8 +89,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return true if the road is in the graph, false if not
      */
     public boolean containsRoadConnection(String town1, String town2) {
-        // TODO Auto-generated method stub
-        return false;
+        return graph.containsEdge(new Town(town1), new Town(town2));
     }
 
     /**
@@ -86,8 +98,13 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return an arraylist of all road titles in sorted order by road name
      */
     public ArrayList<String> allRoads() {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        for (Road road : graph.edgeSet())
+            arrayList.add(road.getName());
+
+        Collections.sort(arrayList);
+        return arrayList;
     }
 
     /**
@@ -99,7 +116,13 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return true if the road was successfully deleted, false if not
      */
     public boolean deleteRoadConnection(String town1, String town2, String road) {
-        // TODO Auto-generated method stub
+        Road e = graph.getEdge(new Town(town1), new Town(town2)), e_deleted = null;
+
+        if (e != null)
+            e_deleted = graph.removeEdge(new Town(town1), new Town(town2), e.getWeight(), e.getName());
+        if (e_deleted != null)
+            return true;
+
         return false;
     }
 
@@ -110,8 +133,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
      * @return true if the town was successfully deleted, false if not
      */
     public boolean deleteTown(String v) {
-        // TODO Auto-generated method stub
-        return false;
+        return graph.removeVertex(new Town(v));
     }
 
     /**
@@ -122,8 +144,13 @@ public class TownGraphManager implements TownGraphManagerInterface {
      *         name)
      */
     public ArrayList<String> allTowns() {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        for (Town town : graph.vertexSet())
+            arrayList.add(town.getName());
+
+        Collections.sort(arrayList);
+        return arrayList;
     }
 
     /**
@@ -135,8 +162,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
      *         towns have no path to connect them.
      */
     public ArrayList<String> getPath(String town1, String town2) {
-        // TODO Auto-generated method stub
-        return null;
+        return graph.shortestPath(new Town(town1), new Town(town2));
     }
 
     public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {

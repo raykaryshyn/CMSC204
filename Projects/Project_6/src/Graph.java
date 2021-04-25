@@ -14,8 +14,13 @@ import java.util.Set;
  * @author Raymond Karyshyn
  */
 public class Graph implements GraphInterface<Town, Road> {
-    private Set<Town> towns = new HashSet<>();
-    private Set<Road> roads = new HashSet<>();
+    private Set<Town> towns;
+    private Set<Road> roads;
+
+    public Graph() {
+        towns = new HashSet<>();
+        roads = new HashSet<>();
+    }
 
     /**
      * Returns an edge connecting source vertex to target vertex if such vertices
@@ -179,7 +184,11 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return The removed edge, or null if no edge removed.
      */
     public Road removeEdge(Town sourceVertex, Town destinationVertex, int weight, String description) {
-        // TODO Auto-generated method stub
+        Road temp = new Road(sourceVertex, destinationVertex, weight, description);
+
+        if (roads.contains(temp) && weight > -1 && description != null)
+            return temp;
+
         return null;
     }
 
@@ -198,8 +207,7 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return true if the graph contained the specified vertex; false otherwise.
      */
     public boolean removeVertex(Town v) {
-        // TODO Auto-generated method stub
-        return false;
+        return towns.remove(v);
     }
 
     /**
@@ -211,8 +219,7 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return a set view of the vertices contained in this graph.
      */
     public Set<Town> vertexSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return towns;
     }
 
     /**
