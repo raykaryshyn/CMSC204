@@ -1,3 +1,6 @@
+/**
+ * @author Raymond Karyshyn
+ */
 public class CountUpRunnable implements Runnable {
     private int from, to;
 

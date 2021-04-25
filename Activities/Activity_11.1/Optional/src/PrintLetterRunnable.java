@@ -1,3 +1,6 @@
+/**
+ * @author Raymond Karyshyn
+ */
 public class PrintLetterRunnable implements Runnable {
     private char letter;
     private int frequency;
