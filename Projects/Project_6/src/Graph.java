@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -13,6 +14,9 @@ import java.util.Set;
  * @author Raymond Karyshyn
  */
 public class Graph implements GraphInterface<Town, Road> {
+    private Set<Town> towns = new HashSet<>();
+    private Set<Road> roads = new HashSet<>();
+
     /**
      * Returns an edge connecting source vertex to target vertex if such vertices
      * and such edge exist in this graph. Otherwise returns null. If any of the
@@ -27,7 +31,11 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return an edge connecting source vertex to target vertex.
      */
     public Road getEdge(Town sourceVertex, Town destinationVertex) {
-        // TODO Auto-generated method stub
+        for (Road road : roads) {
+            if (road.contains(sourceVertex) && road.contains(destinationVertex))
+                return road;
+        }
+
         return null;
     }
 
@@ -52,8 +60,15 @@ public class Graph implements GraphInterface<Town, Road> {
      */
     public Road addEdge(Town sourceVertex, Town destinationVertex, int weight, String description)
             throws IllegalArgumentException, NullPointerException {
-        // TODO Auto-generated method stub
-        return null;
+        if (sourceVertex == null || destinationVertex == null)
+            throw new NullPointerException();
+
+        if (!towns.contains(sourceVertex) || !towns.contains(destinationVertex))
+            throw new IllegalArgumentException();
+
+        Road road = new Road(sourceVertex, destinationVertex, weight, description);
+        roads.add(road);
+        return road;
     }
 
     /**
@@ -71,7 +86,14 @@ public class Graph implements GraphInterface<Town, Road> {
      * @throws NullPointerException if the specified vertex is null.
      */
     public boolean addVertex(Town v) throws NullPointerException {
-        // TODO Auto-generated method stub
+        if (v == null)
+            throw new NullPointerException();
+
+        if (!towns.contains(v)) {
+            towns.add(v);
+            return true;
+        }
+
         return false;
     }
 
@@ -87,7 +109,9 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return true if this graph contains the specified edge.
      */
     public boolean containsEdge(Town sourceVertex, Town destinationVertex) {
-        // TODO Auto-generated method stub
+        if (getEdge(sourceVertex, destinationVertex) != null)
+            return true;
+
         return false;
     }
 
@@ -101,8 +125,7 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return true if this graph contains the specified vertex.
      */
     public boolean containsVertex(Town v) {
-        // TODO Auto-generated method stub
-        return false;
+        return towns.contains(v);
     }
 
     /**
@@ -114,8 +137,7 @@ public class Graph implements GraphInterface<Town, Road> {
      * @return a set of the edges contained in this graph.
      */
     public Set<Road> edgeSet() {
-        // TODO Auto-generated method stub
-        return null;
+        return roads;
     }
 
     /**
@@ -131,15 +153,21 @@ public class Graph implements GraphInterface<Town, Road> {
      * @throws NullPointerException     if vertex is null.
      */
     public Set<Road> edgesOf(Town vertex) throws IllegalArgumentException, NullPointerException {
-        // TODO Auto-generated method stub
-        return null;
+        Set<Road> edges = new HashSet<>();
+
+        for (Road r : roads) {
+            if (r.contains(vertex))
+                edges.add(r);
+        }
+
+        return edges;
     }
 
     /**
      * Removes an edge going from source vertex to target vertex, if such vertices
      * and such edge exist in this graph.
      * 
-     * If weight >- 1 it must be checked If description != null, it must be checked
+     * If weight > -1 it must be checked. If description != null, it must be checked
      * 
      * Returns the edge if removed or null otherwise.
      *
