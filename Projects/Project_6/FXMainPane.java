@@ -329,7 +329,8 @@ public class FXMainPane extends VBox {
 	//update the ComboBoxes that contain the town names
 	public void updateComboBoxes() {
 		ArrayList<String> townList = graph.allTowns();
-		for (String town : townList){
+		//for (String town : townList){
+		for (int i = 0; i < townList.size(); i++) {
 			addDestTownComboBox.getItems().clear();
 			sourceConnectionComboBox.getItems().clear();
 			destConnectionComboBox.getItems().clear();

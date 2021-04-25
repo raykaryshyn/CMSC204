@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TownGraphManager implements TownGraphManagerInterface {
@@ -54,5 +57,8 @@ public class TownGraphManager implements TownGraphManagerInterface {
     public ArrayList<String> getPath(String town1, String town2) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
     }
 }
