@@ -252,10 +252,11 @@ public class Graph implements GraphInterface<Town, Road> {
         ArrayList<String> arrayList = new ArrayList<String>();
 
         dijkstraShortestPath(sourceVertex);
+        System.out.println(previousVerticies);
 
         Town nextTown = destinationVertex;
         while (!nextTown.equals(sourceVertex)) {
-            if (!previousVerticies.containsKey(nextTown))
+            if (!previousVerticies.containsKey(nextTown) || previousVerticies.get(nextTown) == null)
                 break;
 
             Town previousTown = previousVerticies.get(nextTown);
