@@ -38,8 +38,14 @@ public class Town implements Comparable<Town> {
         return name.compareTo(o.name);
     }
 
+    /**
+     * Equals method.
+     * 
+     * @return true if the town names are equal, false if not
+     */
     public boolean equals(Object o) {
-        return true;
+        Town town = (Town) o;
+        return name.compareTo(town.name) == 0;
     }
 
     /**
