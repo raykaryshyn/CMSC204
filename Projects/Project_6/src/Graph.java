@@ -1,5 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -16,10 +21,14 @@ import java.util.Set;
 public class Graph implements GraphInterface<Town, Road> {
     private Set<Town> towns;
     private Set<Road> roads;
+    private Map<Town, List<Town>> adjacencyList;
+    Map<Town, Town> previousVerticies;
 
     public Graph() {
         towns = new HashSet<>();
         roads = new HashSet<>();
+        adjacencyList = new HashMap<>();
+        previousVerticies = new HashMap<>();
     }
 
     /**
@@ -244,6 +253,18 @@ public class Graph implements GraphInterface<Town, Road> {
 
         dijkstraShortestPath(sourceVertex);
 
+        Town nextTown = destinationVertex;
+        while (!nextTown.equals(sourceVertex)) {
+            if (!previousVerticies.containsKey(nextTown))
+                break;
+
+            Town previousTown = previousVerticies.get(nextTown);
+            Road edge = getEdge(previousTown, nextTown);
+            arrayList.add(0, previousTown.getName() + " via " + edge.getName() + " to " + nextTown.getName() + " "
+                    + edge.getWeight() + " mi");
+            nextTown = previousTown;
+        }
+
         return arrayList;
     }
 
@@ -255,6 +276,56 @@ public class Graph implements GraphInterface<Town, Road> {
      * @param sourceVertex the vertex to find shortest path from
      */
     public void dijkstraShortestPath(Town sourceVertex) {
-        // TODO Auto-generated method stub
+        Map<Town, Integer> dist = new HashMap<>();
+        Map<Town, Town> previous = new HashMap<>();
+
+        buildAdjacencyList();
+
+        for (Town town : towns) {
+            dist.put(town, Integer.MAX_VALUE);
+            previous.put(town, null);
+        }
+
+        dist.replace(sourceVertex, 0);
+
+        Set<Town> Q = new HashSet<Town>(dist.keySet());
+
+        while (!Q.isEmpty()) {
+            Iterator<Town> Q_iterator = Q.iterator();
+            Town u = Q_iterator.next();
+            while (Q_iterator.hasNext()) {
+                Town town = Q_iterator.next();
+                if (dist.get(town) < dist.get(u)) {
+                    u = town;
+                }
+            }
+
+            Q.remove(u);
+
+            for (Town v : adjacencyList.get(u)) {
+                if (Q.contains(v)) {
+                    int alt = dist.get(u) + getEdge(u, v).getWeight();
+                    if (alt < dist.get(v)) {
+                        dist.replace(v, alt);
+                        previous.replace(v, u);
+                    }
+                }
+            }
+        }
+
+        previousVerticies = previous;
+    }
+
+    private void buildAdjacencyList() {
+        adjacencyList = new HashMap<>();
+
+        for (Town town : towns) {
+            adjacencyList.put(town, new LinkedList<>());
+        }
+
+        for (Road road : roads) {
+            adjacencyList.get(road.getSource()).add(road.getDestination());
+            adjacencyList.get(road.getDestination()).add(road.getSource());
+        }
     }
 }
