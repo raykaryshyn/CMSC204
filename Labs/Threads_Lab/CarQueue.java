@@ -38,8 +38,6 @@ public class CarQueue {
                     }
                 } catch (InterruptedException exception) {
 
-                } finally {
-
                 }
             }
         }

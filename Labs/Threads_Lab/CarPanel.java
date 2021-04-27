@@ -64,8 +64,6 @@ public class CarPanel extends JComponent {
 					}
 				} catch (InterruptedException exception) {
 
-				} finally {
-
 				}
 			}
 		}
