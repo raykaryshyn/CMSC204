@@ -3,6 +3,12 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Random;
 
+/**
+ * Represents and maintains a queue of random directions that cars should
+ * travel.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CarQueue {
     Queue<Integer> queue;
     Random direction;

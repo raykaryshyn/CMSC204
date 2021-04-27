@@ -3,8 +3,8 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+//import java.util.concurrent.locks.Lock;
+//import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.JComponent;
 
@@ -12,8 +12,8 @@ import javax.swing.JComponent;
  * A car shape that can be positioned anywhere on the screen.
  */
 public class Car {
-	private int xLeft;
-	private int yTop;
+	//private int xLeft;
+	//private int yTop;
 	JComponent component;
 
 	/**
@@ -23,8 +23,8 @@ public class Car {
 	 * @param y the y coordinate of the top left corner
 	 */
 	public Car(int x, int y, JComponent aComponent) {
-		xLeft = x;
-		yTop = y;
+		//xLeft = x;
+		//yTop = y;
 		component = aComponent;
 	}
 
