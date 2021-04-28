@@ -1,7 +1,7 @@
-import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
-import java.util.Queue;
 import java.util.Random;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * Represents and maintains a queue of random directions that cars should
@@ -10,11 +10,11 @@ import java.util.Random;
  * @author Raymond Karyshyn
  */
 public class CarQueue {
-    Queue<Integer> queue;
+    BlockingQueue<Integer> queue;
     Random direction;
 
     public CarQueue() {
-        queue = new ArrayDeque<Integer>();
+        queue = new LinkedBlockingDeque<Integer>();
         direction = new Random();
 
         for (int i = 0; i < 6; i++)
@@ -31,14 +31,18 @@ public class CarQueue {
              * 3 = left
              */
             public void run() {
-                try {
-                    while (true) {
-                        queue.add(direction.nextInt(4));
-                        Thread.sleep(20);
-                    }
-                } catch (InterruptedException exception) {
+                while (CarTracker.FINISHED_CARS < CarTracker.TOTAL_CARS) {
+                    queue.add(direction.nextInt(4));
+                    System.out.println("added to queue");
 
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException exception) {
+
+                    }
                 }
+
+                System.out.println("program finished & no longer adding to queue");
             }
         }
 

@@ -61,8 +61,14 @@ public class CarPanel extends JComponent {
 
 						repaint();
 						Thread.sleep(delay * 1000);
+						System.out.println("moved car" + delay + " (" + i + ")");
 					}
+
+					System.out.println("done with car" + delay);
+					CarTracker.addFinishedCar();
 				} catch (InterruptedException exception) {
+
+				} finally {
 
 				}
 			}
