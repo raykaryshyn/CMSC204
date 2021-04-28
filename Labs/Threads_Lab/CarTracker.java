@@ -1,3 +1,8 @@
+/**
+ * Tracks the ending of car animations.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class CarTracker {
     protected static int FINISHED_CARS = 0;
     protected static final int TOTAL_CARS = 3;
