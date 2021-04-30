@@ -298,18 +298,20 @@ public class FXMainPane extends VBox {
 				town1 = town2 = null;
 			}
 			findConnectionTextArea.setText("");
-			ArrayList<String> path = graph.getPath(town1.getName(), town2.getName());
-			if (town1.equals(town2)){
-				findConnectionTextArea.appendText("Select two different towns");
-			}
-			else if (path.isEmpty()){
-				findConnectionTextArea.appendText("You can't get there from here");
-			}
-			else {
-				for (String s : path){
-					result+=s+"\n";
-					//findConnectionTextArea.appendText(s);
-					findConnectionTextArea.setText(result);
+			if (town1 != null && town2 != null) {
+				ArrayList<String> path = graph.getPath(town1.getName(), town2.getName());
+				if (town1.equals(town2)){
+					findConnectionTextArea.appendText("Select two different towns");
+				}
+				else if (path.isEmpty()){
+					findConnectionTextArea.appendText("You can't get there from here");
+				}
+				else {
+					for (String s : path){
+						result+=s+"\n";
+						//findConnectionTextArea.appendText(s);
+						findConnectionTextArea.setText(result);
+					}
 				}
 			}
 		});
