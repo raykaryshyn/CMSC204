@@ -22,7 +22,7 @@ public class Graph implements GraphInterface<Town, Road> {
     private Set<Town> towns;
     private Set<Road> roads;
     private Map<Town, List<Town>> adjacencyList;
-    Map<Town, Town> previousVerticies;
+    private Map<Town, Town> previousVerticies;
 
     public Graph() {
         towns = new HashSet<>();
