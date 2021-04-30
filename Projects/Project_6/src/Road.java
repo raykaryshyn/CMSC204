@@ -9,9 +9,9 @@
  * @author Raymond Karyshyn
  */
 public class Road implements Comparable<Road> {
-    Town source, destination;
-    int weight;
-    String name;
+    private Town source, destination;
+    private int weight;
+    private String name;
 
     /**
      * Contructor.
