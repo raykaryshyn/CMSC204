@@ -16,7 +16,7 @@ public class SimpleSocketClientExample {
 
         try {
             // Connect to the server
-            Socket socket = new Socket(server, 123);
+            Socket socket = new Socket(server, 8888);
 
             // Create input and output streams to read from and write to the server
             PrintStream out = new PrintStream(socket.getOutputStream());
