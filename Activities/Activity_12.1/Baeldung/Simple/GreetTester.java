@@ -1,8 +1,8 @@
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import org.junit.*;
 
-public class Tester {
+public class GreetTester {
     @Test
     public void givenGreetingClient_whenServerRespondsWhenStarted_thenCorrect() throws Exception {
         GreetClient client = new GreetClient();
