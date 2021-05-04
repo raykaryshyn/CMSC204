@@ -31,6 +31,5 @@ public class ChatRoomDriverFX extends Application {
 		// Set stage title and show the stage.
 		stage.setTitle("Chat Room Controller");
 		stage.show();
-
 	}
 }

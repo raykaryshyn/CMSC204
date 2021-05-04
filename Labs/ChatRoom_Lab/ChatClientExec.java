@@ -9,7 +9,6 @@
  * following this string should be displayed in its message area.
  */
 public class ChatClientExec implements ChatClientExecInterface {
-
 	private int CHAT_ROOM_PORT = 0;
 
 	private static double clientX = 30.0;

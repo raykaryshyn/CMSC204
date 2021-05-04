@@ -132,9 +132,6 @@ public class ChatServer implements Runnable {
                 } catch (IOException e) {
                 }
             }
-
         }
-
     }
-
 }

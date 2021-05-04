@@ -8,7 +8,6 @@
  * unique name, the server acknowledges with "NAMEACCEPTED". Then all messages
  * from that client will be broadcast to all other clients that have submitted a
  * unique screen name. The broadcast messages are prefixed with "MESSAGE ".
- * 
  */
 public class ChatServerExec {
     /**

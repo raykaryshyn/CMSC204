@@ -14,11 +14,9 @@ import javafx.scene.layout.VBox;
  * This panel is the basic panel, inside which other panels are placed.
  * 
  * @author ralexander
- *
  */
 // make the main panel's layout be a BorderPane
 public class ChatRoomMainFX extends BorderPane {
-
 	private static final int CHAT_ROOM_PORT = 5001;
 	private Button startClientButton, exitButton, startServerButton;
 	private Label titleLabel, instructionsLabel1, instructionsLabel2, instructionsLabel3, instructionsLabel4,
@@ -32,7 +30,6 @@ public class ChatRoomMainFX extends BorderPane {
 	 * computer.
 	 */
 	ChatRoomMainFX() {
-
 		Insets inset1 = new Insets(10); // for setting margins
 		titleLabel = new Label("\tChat Room Controller");
 		titleLabel.setStyle("-fx-font-size: 20;");
@@ -108,6 +105,5 @@ public class ChatRoomMainFX extends BorderPane {
 		bottomBox.getChildren().addAll(startServerButton, startClientButton, exitButton); //
 		setBottom(bottomBox);
 		bottomBox.setAlignment(Pos.CENTER);
-
 	}
 }
