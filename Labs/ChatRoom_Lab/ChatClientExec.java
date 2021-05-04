@@ -33,7 +33,8 @@ public class ChatClientExec implements ChatClientExecInterface {
 		setClientY(getClientY() + 50.0);
 		setClientX(getClientX() + 50.0);
 		ChatClient client = new ChatClient(CHAT_ROOM_PORT);
-		// TODO STUDENT: create a thread with client in it
+		Thread clientThread = new Thread(client);
+		clientThread.start();
 	}
 
 	public static double getClientX() {

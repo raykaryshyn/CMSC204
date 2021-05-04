@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import javax.swing.JOptionPane;
 
-public class ChatClient implements Runnable, ChatClientInterface {
+public class ChatClient implements ChatClientInterface {
 	private static int CHAT_ROOM_PORT = 0;
 	boolean local = true;
 	BufferedReader in;
@@ -77,10 +77,11 @@ public class ChatClient implements Runnable, ChatClientInterface {
 	 */
 	public void run() {
 		try {
-			// TODO STUDENT: create a client socket with server address and server port
+			Socket clientSocket = new Socket(getServerAddress(), CHAT_ROOM_PORT);
 
 			// Make connection and initialize streams;
-			// TODO STUDENT: setup input and output streams
+			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			out = new PrintWriter(clientSocket.getOutputStream(), true);
 
 			// Process all messages from server, according to the protocol.
 			while (true) {

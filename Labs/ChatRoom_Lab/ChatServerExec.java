@@ -1,5 +1,5 @@
-import java.io.PrintWriter;
-import java.util.HashSet;
+//import java.io.PrintWriter;
+//import java.util.HashSet;
 
 /**
  * A multithreaded chat room server. When a client connects the server requests
@@ -28,7 +28,8 @@ public class ChatServerExec {
      */
     public void startServer() {
         ChatServer server = new ChatServer(CHAT_ROOM_PORT);
-        // TODO STUDENT: start a thread with server in it
 
+        Thread serverThread = new Thread(server);
+        serverThread.start();
     }
 }
