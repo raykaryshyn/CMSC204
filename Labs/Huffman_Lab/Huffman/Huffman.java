@@ -5,26 +5,17 @@ import java.util.TreeMap;
 
 public class Huffman {
     public static HuffmanPair encode(String message) {
-        HuffmanPair pair = new HuffmanPair();
-
         Map<Character, Integer> frequencyTable = Huffman.buildFrequencyTable(message);
 
-        PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<HuffmanNode>(frequencyTable.size(),
-                new HuffmanComparator());
-
-        for (Map.Entry<Character, Integer> i : frequencyTable.entrySet())
-            priorityQueue.add(new HuffmanNode(i.getKey(), i.getValue()));
+        PriorityQueue<HuffmanNode> priorityQueue = buildPriorityQueue(frequencyTable);
 
         HuffmanTree tree = new HuffmanTree(priorityQueue);
 
-        TreeMap<String, String> t = new TreeMap<>();
+        TreeMap<String, String> codeMap = new TreeMap<>();
 
-        createCode(t, tree.getRoot(), "");
+        createCode(codeMap, tree.getRoot(), "");
 
-        pair.setTree(tree);
-        pair.setCode(codeString(t, message));
-
-        return pair;
+        return new HuffmanPair(tree, codeString(codeMap, message));
     }
 
     public static String decode(HuffmanPair pair) {
@@ -42,6 +33,16 @@ public class Huffman {
             frequencies.put(c, frequencies.getOrDefault(c, 0) + 1);
 
         return frequencies;
+    }
+
+    private static PriorityQueue<HuffmanNode> buildPriorityQueue(Map<Character, Integer> frequencyTable) {
+        PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<HuffmanNode>(frequencyTable.size(),
+                new HuffmanComparator());
+
+        for (Map.Entry<Character, Integer> i : frequencyTable.entrySet())
+            priorityQueue.add(new HuffmanNode(i.getKey(), i.getValue()));
+
+        return priorityQueue;
     }
 
     private static void createCode(TreeMap<String, String> t, HuffmanNode root, String s) {
