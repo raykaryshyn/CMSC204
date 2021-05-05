@@ -1,20 +1,21 @@
+import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
 public class Driver {
     public static void main(String[] args) {
-        int n = 11;
-        String[] charArray = { "c", "r", "e", "a", "t", " ", "h", "u", "f", "m", "n" };
-        int[] charfreq = { 1, 2, 4, 3, 2, 3, 1, 1, 2, 1, 1 };
+        String input = "create a huffman tree";
+        Map<Character, Integer> frequencies = new HashMap<>();
+        for (char ch : input.toCharArray())
+            frequencies.put(ch, frequencies.getOrDefault(ch, 0) + 1);
 
-        PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(n, new HuffmanComparator());
+        System.out.println("Frequencies: " + frequencies);
 
-        for (int i = 0; i < n; i++) {
-            HuffmanNode hn = new HuffmanNode(charArray[i], charfreq[i]);
+        PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(frequencies.size(), new HuffmanComparator());
 
-            q.add(hn);
-        }
+        for (Map.Entry<Character, Integer> i : frequencies.entrySet())
+            q.add(new HuffmanNode(i.getKey(), i.getValue()));
 
         HuffmanNode root = null;
 
@@ -32,54 +33,33 @@ public class Driver {
             q.add(f);
         }
 
-        printCode(root, "");
+        TreeMap<String, String> t = new TreeMap<>();
+        createCode(t, root, "");
 
-        System.out.println(t);
+        System.out.println("Code: " + t);
 
-        codeLetter(t, "c");
-        codeLetter(t, "r");
-        codeLetter(t, "e");
-        codeLetter(t, "a");
-        codeLetter(t, "t");
-        codeLetter(t, "e");
-        codeLetter(t, " ");
-        codeLetter(t, "a");
-        codeLetter(t, " ");
-        codeLetter(t, "h");
-        codeLetter(t, "u");
-        codeLetter(t, "f");
-        codeLetter(t, "f");
-        codeLetter(t, "m");
-        codeLetter(t, "a");
-        codeLetter(t, "n");
-        codeLetter(t, " ");
-        codeLetter(t, "t");
-        codeLetter(t, "r");
-        codeLetter(t, "e");
-        codeLetter(t, "e");
+        System.out.println("Huffman: " + codeString(t, input));
     }
 
-    private static TreeMap<String, String> t = new TreeMap<>();
-
-    private static void printCode(HuffmanNode root, String s) {
+    private static void createCode(TreeMap<String, String> t, HuffmanNode root, String s) {
         if (root.getLeft() == null && root.getRight() == null) {
-            // System.out.println("'" + root.getCharacter() + "' : " + s);
-
             t.put(root.getCharacter(), s);
 
             return;
         }
 
-        printCode(root.getLeft(), s + "0");
-        printCode(root.getRight(), s + "1");
+        createCode(t, root.getLeft(), s + "0");
+        createCode(t, root.getRight(), s + "1");
     }
 
-    private static int codeLetter(TreeMap<String, String> t, String letter) {
-        int result = -1;
+    private static String codeString(TreeMap<String, String> t, String s) {
+        String result = "";
 
-        for (Map.Entry<String, String> n : t.entrySet()) {
-            if (letter == n.getKey())
-                System.out.print(n.getValue());
+        for (char c : s.toCharArray()) {
+            for (Map.Entry<String, String> n : t.entrySet()) {
+                if (String.valueOf(c).equals(n.getKey()))
+                    result += n.getValue();
+            }
         }
 
         return result;

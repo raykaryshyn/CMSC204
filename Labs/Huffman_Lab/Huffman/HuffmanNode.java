@@ -4,6 +4,10 @@ public class HuffmanNode {
     private HuffmanNode left, right;
     private static int counter = 0;
 
+    public HuffmanNode(char character, int frequency) {
+        this(String.valueOf(character), frequency, null, null);
+    }
+
     public HuffmanNode(String character, int frequency) {
         this(character, frequency, null, null);
     }
