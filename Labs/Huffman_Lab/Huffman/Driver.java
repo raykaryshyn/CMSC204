@@ -62,9 +62,8 @@ public class Driver {
     private static TreeMap<String, String> t = new TreeMap<>();
 
     public static void printCode(HuffmanNode root, String s) {
-
         if (root.getLeft() == null && root.getRight() == null) {
-            System.out.println("'" + root.getCharacter() + "' : " + s);
+            // System.out.println("'" + root.getCharacter() + "' : " + s);
 
             t.put(root.getCharacter(), s);
 
