@@ -61,7 +61,7 @@ public class Driver {
 
     private static TreeMap<String, String> t = new TreeMap<>();
 
-    public static void printCode(HuffmanNode root, String s) {
+    private static void printCode(HuffmanNode root, String s) {
         if (root.getLeft() == null && root.getRight() == null) {
             // System.out.println("'" + root.getCharacter() + "' : " + s);
 
@@ -74,7 +74,7 @@ public class Driver {
         printCode(root.getRight(), s + "1");
     }
 
-    public static int codeLetter(TreeMap<String, String> t, String letter) {
+    private static int codeLetter(TreeMap<String, String> t, String letter) {
         int result = -1;
 
         for (Map.Entry<String, String> n : t.entrySet()) {
