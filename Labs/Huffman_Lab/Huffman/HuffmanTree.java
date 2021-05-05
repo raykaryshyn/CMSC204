@@ -7,14 +7,16 @@ public class HuffmanTree {
     public HuffmanTree(PriorityQueue<HuffmanNode> priorityQueue) {
         this.root = null;
         this.priorityQueue = new PriorityQueue<>(priorityQueue);
-        buildTree();
+        buildTree(this.priorityQueue);
     }
 
     public HuffmanNode getRoot() {
         return this.root;
     }
 
-    private void buildTree() {
+    private void buildTree(PriorityQueue<HuffmanNode> priorityQueue) {
+        this.priorityQueue = priorityQueue;
+
         while (this.priorityQueue.size() > 1) {
             HuffmanNode x = this.priorityQueue.peek();
             this.priorityQueue.poll();

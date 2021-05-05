@@ -5,15 +5,9 @@ import java.util.TreeMap;
 
 public class Huffman {
     public static HuffmanPair encode(String message) {
-        Map<Character, Integer> frequencyTable = Huffman.buildFrequencyTable(message);
+        HuffmanTree tree = new HuffmanTree(Huffman.priorityQueue(message));
 
-        PriorityQueue<HuffmanNode> priorityQueue = buildPriorityQueue(frequencyTable);
-
-        HuffmanTree tree = new HuffmanTree(priorityQueue);
-
-        TreeMap<String, String> codeMap = createCode(tree);
-
-        return new HuffmanPair(tree, codeString(codeMap, message));
+        return new HuffmanPair(tree, codeString(createCode(tree), message));
     }
 
     public static String decode(HuffmanPair pair) {
@@ -24,16 +18,15 @@ public class Huffman {
         return "";
     }
 
-    private static Map<Character, Integer> buildFrequencyTable(String message) {
-        Map<Character, Integer> frequencies = new HashMap<>();
-
-        for (char c : message.toCharArray())
-            frequencies.put(c, frequencies.getOrDefault(c, 0) + 1);
-
-        return frequencies;
+    public static HuffmanTree tree(String message) {
+        return new HuffmanTree(Huffman.priorityQueue(message));
     }
 
-    private static PriorityQueue<HuffmanNode> buildPriorityQueue(Map<Character, Integer> frequencyTable) {
+    public static PriorityQueue<HuffmanNode> priorityQueue(String message) {
+        return Huffman.priorityQueue(Huffman.frequencyTable(message));
+    }
+
+    private static PriorityQueue<HuffmanNode> priorityQueue(Map<Character, Integer> frequencyTable) {
         PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<HuffmanNode>(frequencyTable.size(),
                 new HuffmanComparator());
 
@@ -41,6 +34,15 @@ public class Huffman {
             priorityQueue.add(new HuffmanNode(i.getKey(), i.getValue()));
 
         return priorityQueue;
+    }
+
+    public static Map<Character, Integer> frequencyTable(String message) {
+        Map<Character, Integer> frequencies = new HashMap<>();
+
+        for (char c : message.toCharArray())
+            frequencies.put(c, frequencies.getOrDefault(c, 0) + 1);
+
+        return frequencies;
     }
 
     private static TreeMap<String, String> createCode(HuffmanTree tree) {
