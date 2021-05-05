@@ -13,7 +13,7 @@ public class HuffmanNode {
     }
 
     public HuffmanNode(int frequency, HuffmanNode left, HuffmanNode right) {
-        this(("~" + counter), frequency, left, right);
+        this(("~~" + counter), frequency, left, right);
         counter++;
     }
 
