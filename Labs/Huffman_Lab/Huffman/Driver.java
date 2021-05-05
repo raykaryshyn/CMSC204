@@ -17,24 +17,10 @@ public class Driver {
         for (Map.Entry<Character, Integer> i : frequencies.entrySet())
             q.add(new HuffmanNode(i.getKey(), i.getValue()));
 
-        HuffmanNode root = null;
-
-        while (q.size() > 1) {
-            HuffmanNode x = q.peek();
-            q.poll();
-
-            HuffmanNode y = q.peek();
-            q.poll();
-
-            HuffmanNode f = new HuffmanNode(x.getFrequency() + y.getFrequency(), x, y);
-
-            root = f;
-
-            q.add(f);
-        }
+        HuffmanTree tree = new HuffmanTree(q);
 
         TreeMap<String, String> t = new TreeMap<>();
-        createCode(t, root, "");
+        createCode(t, tree.getRoot(), "");
 
         System.out.println("Code: " + t);
 
