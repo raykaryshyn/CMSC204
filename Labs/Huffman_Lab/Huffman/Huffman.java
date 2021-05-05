@@ -11,9 +11,7 @@ public class Huffman {
 
         HuffmanTree tree = new HuffmanTree(priorityQueue);
 
-        TreeMap<String, String> codeMap = new TreeMap<>();
-
-        createCode(codeMap, tree.getRoot(), "");
+        TreeMap<String, String> codeMap = createCode(tree);
 
         return new HuffmanPair(tree, codeString(codeMap, message));
     }
@@ -45,15 +43,23 @@ public class Huffman {
         return priorityQueue;
     }
 
-    private static void createCode(TreeMap<String, String> t, HuffmanNode root, String s) {
+    private static TreeMap<String, String> createCode(HuffmanTree tree) {
+        TreeMap<String, String> codeMap = new TreeMap<>();
+
+        createCodeRecursive(codeMap, tree.getRoot(), "");
+
+        return codeMap;
+    }
+
+    private static void createCodeRecursive(TreeMap<String, String> t, HuffmanNode root, String s) {
         if (root.getLeft() == null && root.getRight() == null) {
             t.put(root.getCharacter(), s);
 
             return;
         }
 
-        createCode(t, root.getLeft(), s + "0");
-        createCode(t, root.getRight(), s + "1");
+        createCodeRecursive(t, root.getLeft(), s + "0");
+        createCodeRecursive(t, root.getRight(), s + "1");
     }
 
     private static String codeString(TreeMap<String, String> t, String s) {
