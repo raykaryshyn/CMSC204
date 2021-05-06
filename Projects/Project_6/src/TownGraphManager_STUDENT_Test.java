@@ -94,7 +94,7 @@ public class TownGraphManager_STUDENT_Test {
     @Test
     public void testDeleteRoadConnection() {
         assertEquals(true, graph.containsRoadConnection(town[0], town[1]));
-        graph.deleteRoadConnection(town[0], town[1], "Road A");
+        assertEquals(true, graph.deleteRoadConnection(town[1], town[0], "Road A"));
         assertEquals(false, graph.containsRoadConnection(town[0], town[1]));
     }
 
