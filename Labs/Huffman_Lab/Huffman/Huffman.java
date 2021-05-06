@@ -22,6 +22,25 @@ public class Huffman {
     }
 
     /**
+     * Encodes a message without the needed HuffmanTree for decoding.
+     * 
+     * @param message The message to be encoded.
+     * @return A String of the encoded message.
+     */
+    public static String encodedMessage(String message) {
+        Map<String, String> t = Huffman.encodingMap(message);
+
+        String result = "";
+
+        for (char c : message.toCharArray()) {
+            if (t.containsKey(String.valueOf(c)))
+                result += t.get(String.valueOf(c));
+        }
+
+        return result;
+    }
+
+    /**
      * Decodes a given encoded message using a HuffmanPair object.
      * 
      * @param pair The HuffmanPair containing the HuffmanTree used to encode and the
@@ -71,7 +90,7 @@ public class Huffman {
     }
 
     /**
-     * The PriorityQueue for encoding a given message.
+     * The priority queue for encoding a given message.
      * 
      * @param message The message to be encoded.
      * @return A PriorityQueue of HuffmanNodes for encoding the message.
@@ -81,12 +100,12 @@ public class Huffman {
     }
 
     /**
-     * The PriorityQueue made from a message's given character frequency map.
+     * The priority queue made from a message's given character frequency map.
      * 
      * @param frequencyMap The frequency map.
      * @return A PriorityQueue of HuffmanNodes.
      */
-    private static PriorityQueue<HuffmanNode> priorityQueue(Map<Character, Integer> frequencyMap) {
+    public static PriorityQueue<HuffmanNode> priorityQueue(Map<Character, Integer> frequencyMap) {
         PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<HuffmanNode>(frequencyMap.size(),
                 new HuffmanComparator());
 
@@ -96,6 +115,13 @@ public class Huffman {
         return priorityQueue;
     }
 
+    /**
+     * The frequency map of a given message.
+     * 
+     * @param message The message which frequencies are to be mapped.
+     * @return A Map object representing the frequency map whose key's are the
+     *         characters and values are the frequency counters.
+     */
     public static Map<Character, Integer> frequencyMap(String message) {
         Map<Character, Integer> frequencies = new HashMap<>();
 
@@ -105,39 +131,53 @@ public class Huffman {
         return frequencies;
     }
 
-    public static TreeMap<String, String> encodingMap(String message) {
+    /**
+     * The encoding map that is used to encode a given message.
+     * 
+     * @param message The message to be encoded.
+     * @return A Map object representing the encoding map whose key's are the
+     *         characters and values are the location in the HuffmanTree for that
+     *         character. The location is found by starting at the root node and
+     *         traversing to the left when encountering a 0 and to the right when
+     *         encountering a 1.
+     */
+    public static Map<String, String> encodingMap(String message) {
         return Huffman.encodingMap(Huffman.huffmanTree(message));
     }
 
-    public static TreeMap<String, String> encodingMap(HuffmanTree tree) {
-        TreeMap<String, String> codeMap = new TreeMap<>();
+    /**
+     * The encoding map that is used to encode messages with a given HuffmanTree.
+     * 
+     * @param tree The HuffmanTree for encoding a mesage.
+     * @return A Map object representing the encoding map whose key's are the
+     *         characters and values are the location in the HuffmanTree for that
+     *         character. The location is found by starting at the root node and
+     *         traversing to the left when encountering a 0 and to the right when
+     *         encountering a 1.
+     */
+    public static Map<String, String> encodingMap(HuffmanTree tree) {
+        Map<String, String> encodingMap = new TreeMap<>();
 
-        encodingMapRecursive(codeMap, tree.getRoot(), "");
+        encodingMapRecursive(encodingMap, tree.getRoot(), "");
 
-        return codeMap;
+        return encodingMap;
     }
 
-    private static void encodingMapRecursive(TreeMap<String, String> t, HuffmanNode root, String s) {
+    /**
+     * An internal method for generating the encoding map recursively.
+     * 
+     * @param tree The Map object to store the character encodings in.
+     * @param root The current root node of the HuffmanTree.
+     * @param s    The current character's current encoding.
+     */
+    private static void encodingMapRecursive(Map<String, String> map, HuffmanNode root, String s) {
         if (root.getLeft() == null && root.getRight() == null) {
-            t.put(root.getCharacter(), s);
+            map.put(root.getCharacter(), s);
 
             return;
         }
 
-        encodingMapRecursive(t, root.getLeft(), s + "0");
-        encodingMapRecursive(t, root.getRight(), s + "1");
-    }
-
-    public static String encodedMessage(String s) {
-        TreeMap<String, String> t = Huffman.encodingMap(s);
-
-        String result = "";
-
-        for (char c : s.toCharArray()) {
-            if (t.containsKey(String.valueOf(c)))
-                result += t.get(String.valueOf(c));
-        }
-
-        return result;
+        encodingMapRecursive(map, root.getLeft(), s + "0");
+        encodingMapRecursive(map, root.getRight(), s + "1");
     }
 }

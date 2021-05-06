@@ -41,9 +41,8 @@ public class HuffmanTree {
         for (Map.Entry<String, String> entry : encodingMap.entrySet()) {
             output += "('" + entry.getKey() + "', " + entry.getValue() + "), ";
         }
-        output = output.substring(0, output.length() - 2);
 
-        output += "}";
+        output = output.substring(0, output.length() - 2) + "}";
 
         return output;
     }
