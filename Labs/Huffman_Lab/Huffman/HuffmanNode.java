@@ -24,6 +24,14 @@ public class HuffmanNode {
         this.right = right;
     }
 
+    public boolean hasLeft() {
+        return left != null;
+    }
+
+    public boolean hasRight() {
+        return right != null;
+    }
+
     public String getCharacter() {
         return character;
     }

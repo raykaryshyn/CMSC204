@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class HuffmanTree {
@@ -30,5 +31,20 @@ public class HuffmanTree {
 
             this.priorityQueue.add(f);
         }
+    }
+
+    public String toString() {
+        Map<String, String> encryptionMap = Huffman.encryptionMap(this);
+
+        String output = "{";
+
+        for (Map.Entry<String, String> entry : encryptionMap.entrySet()) {
+            output += "('" + entry.getKey() + "', " + entry.getValue() + "), ";
+        }
+        output = output.substring(0, output.length() - 2);
+
+        output += "}";
+
+        return output;
     }
 }

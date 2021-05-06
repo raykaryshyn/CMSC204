@@ -12,8 +12,24 @@ public class Huffman {
         return Huffman.decode(pair.getHuffmanTree(), pair.getEncodedMessage());
     }
 
-    public static String decode(HuffmanTree tree, String code) {
-        return "";
+    public static String decode(HuffmanTree huffmanTree, String encryptedMessage) {
+        HuffmanNode root = huffmanTree.getRoot();
+
+        String decodedMessage = "";
+
+        for (char c : encryptedMessage.toCharArray()) {
+            if (c == '0' && root.hasLeft())
+                root = root.getLeft();
+            else if (c == '1' && root.hasRight())
+                root = root.getRight();
+
+            if (!(root.hasLeft() && root.hasRight())) {
+                decodedMessage += root.getCharacter();
+                root = huffmanTree.getRoot();
+            }
+        }
+
+        return decodedMessage;
     }
 
     public static HuffmanTree huffmanTree(String message) {
@@ -47,7 +63,7 @@ public class Huffman {
         return Huffman.encryptionMap(Huffman.huffmanTree(message));
     }
 
-    private static TreeMap<String, String> encryptionMap(HuffmanTree tree) {
+    public static TreeMap<String, String> encryptionMap(HuffmanTree tree) {
         TreeMap<String, String> codeMap = new TreeMap<>();
 
         encryptionMapRecursive(codeMap, tree.getRoot(), "");
