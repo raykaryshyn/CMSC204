@@ -1,11 +1,20 @@
+/**
+ * Utilizes the Huffman class to encode and decode various messages with Huffman
+ * coding.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class Driver {
     public static void main(String[] args) {
         String[] messages = { "create a huffman tree", "huffman tree", "I can't believe this works...!" };
 
         for (String message : messages) {
+            // Encode the original message
             HuffmanPair huffmanPair = Huffman.encode(message);
             HuffmanTree huffmanTree = huffmanPair.getHuffmanTree();
             String encodedMessage = huffmanPair.getEncodedMessage();
+
+            // Decode the encoded message
             String decodedMessage = Huffman.decode(huffmanPair);
 
             System.out.println("Original Message:\t\t" + message);

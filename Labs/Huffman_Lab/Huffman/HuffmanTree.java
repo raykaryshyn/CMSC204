@@ -34,11 +34,11 @@ public class HuffmanTree {
     }
 
     public String toString() {
-        Map<String, String> encryptionMap = Huffman.encryptionMap(this);
+        Map<String, String> encodingMap = Huffman.encodingMap(this);
 
         String output = "{";
 
-        for (Map.Entry<String, String> entry : encryptionMap.entrySet()) {
+        for (Map.Entry<String, String> entry : encodingMap.entrySet()) {
             output += "('" + entry.getKey() + "', " + entry.getValue() + "), ";
         }
         output = output.substring(0, output.length() - 2);
