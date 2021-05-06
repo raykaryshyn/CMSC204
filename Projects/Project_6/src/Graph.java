@@ -194,10 +194,16 @@ public class Graph implements GraphInterface<Town, Road> {
      */
     public Road removeEdge(Town sourceVertex, Town destinationVertex, int weight, String description) {
         Road temp = new Road(sourceVertex, destinationVertex, weight, description);
+        Road temp_rev = new Road(destinationVertex, sourceVertex, weight, description);
 
-        if (roads.contains(temp) && weight > -1 && description != null) {
-            roads.remove(temp);
-            return temp;
+        if ((roads.contains(temp) || roads.contains(temp_rev)) && weight > -1 && description != null) {
+            if (roads.contains(temp)) {
+                roads.remove(temp);
+                return temp;
+            } else if (roads.contains(temp_rev)) {
+                roads.remove(temp_rev);
+                return temp_rev;
+            }
         }
 
         return null;
