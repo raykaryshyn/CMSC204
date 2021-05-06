@@ -1,38 +1,63 @@
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/**
+ * Represents a Huffman tree of HuffmanNodes.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class HuffmanTree {
     private HuffmanNode root;
     private PriorityQueue<HuffmanNode> priorityQueue;
 
+    /**
+     * Constructor which uses a priority queue for controlling the order in which
+     * the nodes are removed.
+     * 
+     * @param priorityQueue A PriorityQueue of HuffmanNodes.
+     */
     public HuffmanTree(PriorityQueue<HuffmanNode> priorityQueue) {
         this.root = null;
         this.priorityQueue = new PriorityQueue<>(priorityQueue);
-        buildTree(this.priorityQueue);
+
+        buildTree();
     }
 
+    /**
+     * The root of the Huffman tree.
+     * 
+     * @return A HuffmanNode representing the root of the Huffman tree.
+     */
     public HuffmanNode getRoot() {
         return this.root;
     }
 
-    private void buildTree(PriorityQueue<HuffmanNode> priorityQueue) {
-        this.priorityQueue = priorityQueue;
-
+    /**
+     * An internal method for building a Huffman tree from the instance's priority
+     * queue.
+     */
+    private void buildTree() {
         while (this.priorityQueue.size() > 1) {
-            HuffmanNode x = this.priorityQueue.peek();
+            HuffmanNode a = this.priorityQueue.peek();
             this.priorityQueue.poll();
 
-            HuffmanNode y = this.priorityQueue.peek();
+            HuffmanNode b = this.priorityQueue.peek();
             this.priorityQueue.poll();
 
-            HuffmanNode f = new HuffmanNode(x.getFrequency() + y.getFrequency(), x, y);
+            HuffmanNode newRoot = new HuffmanNode(a.getFrequency() + b.getFrequency(), a, b);
 
-            this.root = f;
+            this.root = newRoot;
 
-            this.priorityQueue.add(f);
+            this.priorityQueue.add(newRoot);
         }
     }
 
+    /**
+     * Represents the Huffman tree as a string formatted as: <br>
+     * "{(character, encoding), ...}"
+     * 
+     * @return A String representing the Huffman tree.
+     */
     public String toString() {
         Map<String, String> encodingMap = Huffman.encodingMap(this);
 
