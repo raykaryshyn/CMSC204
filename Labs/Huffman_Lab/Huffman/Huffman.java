@@ -5,9 +5,7 @@ import java.util.TreeMap;
 
 public class Huffman {
     public static HuffmanPair encode(String message) {
-        HuffmanTree tree = new HuffmanTree(Huffman.priorityQueue(message));
-
-        return new HuffmanPair(tree, codeString(createCode(tree), message));
+        return new HuffmanPair(Huffman.huffmanTree(message), Huffman.encodedMessage(message));
     }
 
     public static String decode(HuffmanPair pair) {
@@ -18,7 +16,7 @@ public class Huffman {
         return "";
     }
 
-    public static HuffmanTree tree(String message) {
+    public static HuffmanTree huffmanTree(String message) {
         return new HuffmanTree(Huffman.priorityQueue(message));
     }
 
@@ -45,26 +43,32 @@ public class Huffman {
         return frequencies;
     }
 
-    private static TreeMap<String, String> createCode(HuffmanTree tree) {
+    public static TreeMap<String, String> encryptionMap(String message) {
+        return Huffman.encryptionMap(Huffman.huffmanTree(message));
+    }
+
+    private static TreeMap<String, String> encryptionMap(HuffmanTree tree) {
         TreeMap<String, String> codeMap = new TreeMap<>();
 
-        createCodeRecursive(codeMap, tree.getRoot(), "");
+        encryptionMapRecursive(codeMap, tree.getRoot(), "");
 
         return codeMap;
     }
 
-    private static void createCodeRecursive(TreeMap<String, String> t, HuffmanNode root, String s) {
+    private static void encryptionMapRecursive(TreeMap<String, String> t, HuffmanNode root, String s) {
         if (root.getLeft() == null && root.getRight() == null) {
             t.put(root.getCharacter(), s);
 
             return;
         }
 
-        createCodeRecursive(t, root.getLeft(), s + "0");
-        createCodeRecursive(t, root.getRight(), s + "1");
+        encryptionMapRecursive(t, root.getLeft(), s + "0");
+        encryptionMapRecursive(t, root.getRight(), s + "1");
     }
 
-    private static String codeString(TreeMap<String, String> t, String s) {
+    public static String encodedMessage(String s) {
+        TreeMap<String, String> t = Huffman.encryptionMap(s);
+
         String result = "";
 
         for (char c : s.toCharArray()) {
