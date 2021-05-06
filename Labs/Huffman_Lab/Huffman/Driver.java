@@ -3,6 +3,6 @@ public class Driver {
         String message = "create a huffman tree";
 
         System.out.println("Message: " + message);
-        System.out.println("Huffman: " + Huffman.encode(message).getCode());
+        System.out.println("Huffman: " + Huffman.encode(message).getEncodedMessage());
     }
 }

@@ -1,29 +1,29 @@
 public class HuffmanPair {
-    private HuffmanTree tree;
-    private String code;
+    private HuffmanTree huffmanTree;
+    private String encodedMessage;
 
     public HuffmanPair() {
         this(null, null);
     }
 
-    public HuffmanPair(HuffmanTree tree, String code) {
-        this.tree = tree;
-        this.code = code;
+    public HuffmanPair(HuffmanTree huffmanTree, String encodedMessage) {
+        this.huffmanTree = huffmanTree;
+        this.encodedMessage = encodedMessage;
     }
 
-    public HuffmanTree getTree() {
-        return tree;
+    public HuffmanTree getHuffmanTree() {
+        return huffmanTree;
     }
 
-    public void setTree(HuffmanTree tree) {
-        this.tree = tree;
+    public void setHuffmanTree(HuffmanTree huffmanTree) {
+        this.huffmanTree = huffmanTree;
     }
 
-    public String getCode() {
-        return code;
+    public String getEncodedMessage() {
+        return encodedMessage;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setEncodedMessage(String encodedMessage) {
+        this.encodedMessage = encodedMessage;
     }
 }

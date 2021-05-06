@@ -11,7 +11,7 @@ public class Huffman {
     }
 
     public static String decode(HuffmanPair pair) {
-        return Huffman.decode(pair.getTree(), pair.getCode());
+        return Huffman.decode(pair.getHuffmanTree(), pair.getEncodedMessage());
     }
 
     public static String decode(HuffmanTree tree, String code) {
