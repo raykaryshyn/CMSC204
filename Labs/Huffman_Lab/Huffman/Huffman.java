@@ -72,10 +72,8 @@ public class Huffman {
         String result = "";
 
         for (char c : s.toCharArray()) {
-            for (Map.Entry<String, String> n : t.entrySet()) {
-                if (String.valueOf(c).equals(n.getKey()))
-                    result += n.getValue();
-            }
+            if (t.containsKey(String.valueOf(c)))
+                result += t.get(String.valueOf(c));
         }
 
         return result;
