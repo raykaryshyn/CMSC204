@@ -18,7 +18,7 @@ public class Driver {
             String decodedMessage = Huffman.decode(huffmanPair);
 
             System.out.println("Original Message:\t\t" + message);
-            System.out.println("Huffman Encryption Map:\t\t" + huffmanTree);
+            System.out.println("Huffman Encoding Map:\t\t" + huffmanTree);
             System.out.println("Huffman Encoded Message:\t" + encodedMessage);
             System.out.println("Huffman Decoded Message:\t" + decodedMessage + "\n");
         }
