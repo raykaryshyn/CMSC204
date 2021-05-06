@@ -77,20 +77,26 @@ public class Huffman {
      * @return A PriorityQueue of HuffmanNodes for encoding the message.
      */
     public static PriorityQueue<HuffmanNode> priorityQueue(String message) {
-        return Huffman.priorityQueue(Huffman.frequencyTable(message));
+        return Huffman.priorityQueue(Huffman.frequencyMap(message));
     }
 
-    private static PriorityQueue<HuffmanNode> priorityQueue(Map<Character, Integer> frequencyTable) {
-        PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<HuffmanNode>(frequencyTable.size(),
+    /**
+     * The PriorityQueue made from a message's given character frequency map.
+     * 
+     * @param frequencyMap The frequency map.
+     * @return A PriorityQueue of HuffmanNodes.
+     */
+    private static PriorityQueue<HuffmanNode> priorityQueue(Map<Character, Integer> frequencyMap) {
+        PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<HuffmanNode>(frequencyMap.size(),
                 new HuffmanComparator());
 
-        for (Map.Entry<Character, Integer> i : frequencyTable.entrySet())
+        for (Map.Entry<Character, Integer> i : frequencyMap.entrySet())
             priorityQueue.add(new HuffmanNode(i.getKey(), i.getValue()));
 
         return priorityQueue;
     }
 
-    public static Map<Character, Integer> frequencyTable(String message) {
+    public static Map<Character, Integer> frequencyMap(String message) {
         Map<Character, Integer> frequencies = new HashMap<>();
 
         for (char c : message.toCharArray())
