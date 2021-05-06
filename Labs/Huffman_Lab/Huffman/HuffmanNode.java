@@ -1,3 +1,8 @@
+/**
+ * Represents a node in the Huffman tree.
+ * 
+ * @author Raymond Karyshyn
+ */
 public class HuffmanNode {
     private String character;
     private int frequency;
