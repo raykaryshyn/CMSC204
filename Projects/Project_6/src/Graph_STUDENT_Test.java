@@ -124,8 +124,8 @@ public class Graph_STUDENT_Test {
     }
 
     @Test
-    public void testTown_1ToTown_11() {
-        String beginTown = "Town_1", endTown = "Town_11";
+    public void testTown4ToTown2() {
+        String beginTown = "Town 4", endTown = "Town 2";
         Town beginIndex = null, endIndex = null;
         Set<Town> towns = graph.vertexSet();
         Iterator<Town> iterator = towns.iterator();
@@ -137,20 +137,19 @@ public class Graph_STUDENT_Test {
                 endIndex = town;
         }
         if (beginIndex != null && endIndex != null) {
-
             ArrayList<String> path = graph.shortestPath(beginIndex, endIndex);
             assertNotNull(path);
             assertTrue(path.size() > 0);
-            assertEquals("Town_1 via Road_1 to Town_2 2 mi", path.get(0).trim());
-            assertEquals("Town_2 via Road_12 to Town_11 6 mi", path.get(1).trim());
+            assertEquals("Town 4 via Road D to Town 0 40 mi", path.get(0).trim());
+            assertEquals("Town 0 via Road B to Town 2 20 mi", path.get(1).trim());
         } else
             fail("Town names are not valid");
 
     }
 
     @Test
-    public void testTown1ToTown_10() {
-        String beginTown = "Town_1", endTown = "Town_10";
+    public void testTown0ToTown4() {
+        String beginTown = "Town 0", endTown = "Town 4";
         Town beginIndex = null, endIndex = null;
         Set<Town> towns = graph.vertexSet();
         Iterator<Town> iterator = towns.iterator();
@@ -162,21 +161,18 @@ public class Graph_STUDENT_Test {
                 endIndex = town;
         }
         if (beginIndex != null && endIndex != null) {
-
             ArrayList<String> path = graph.shortestPath(beginIndex, endIndex);
             assertNotNull(path);
             assertTrue(path.size() > 0);
-            assertEquals("Town_1 via Road_2 to Town_3 4 mi", path.get(0).trim());
-            assertEquals("Town_3 via Road_5 to Town_8 2 mi", path.get(1).trim());
-            assertEquals("Town_8 via Road_9 to Town_10 2 mi", path.get(2).trim());
+            assertEquals("Town 0 via Road D to Town 4 40 mi", path.get(0).trim());
         } else
             fail("Town names are not valid");
 
     }
 
     @Test
-    public void testTown_4ToTown_11() {
-        String beginTown = "Town_4", endTown = "Town_11";
+    public void testTown1ToTown3() {
+        String beginTown = "Town 1", endTown = "Town 3";
         Town beginIndex = null, endIndex = null;
         Set<Town> towns = graph.vertexSet();
         Iterator<Town> iterator = towns.iterator();
@@ -188,13 +184,11 @@ public class Graph_STUDENT_Test {
                 endIndex = town;
         }
         if (beginIndex != null && endIndex != null) {
-
             ArrayList<String> path = graph.shortestPath(beginIndex, endIndex);
             assertNotNull(path);
             assertTrue(path.size() > 0);
-            assertEquals("Town_4 via Road_6 to Town_8 3 mi", path.get(0).trim());
-            assertEquals("Town_8 via Road_9 to Town_10 2 mi", path.get(1).trim());
-            assertEquals("Town_10 via Road_11 to Town_11 3 mi", path.get(2).trim());
+            assertEquals("Town 1 via Road A to Town 0 10 mi", path.get(0).trim());
+            assertEquals("Town 0 via Road C to Town 3 30 mi", path.get(1).trim());
         } else
             fail("Town names are not valid");
 
